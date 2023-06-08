@@ -1,104 +1,461 @@
 {
   "languageTag": "en-US",
-  "fileDescription": "Strings for skymen_shell.",
+  "fileDescription": "Strings for skymen_better_input_manager.",
   "text": {
     "plugins": {
-      "skymen_shell": {
-        "name": "Empty Shell",
-        "description": "An empty shell addon that can be given a texture",
+      "skymen_better_input_manager": {
+        "name": "Better Input Manager",
+        "description": "An improved input manager",
         "help-url": "https://www.construct.net",
         "aceCategories": {
+          "digital": "Digital",
+          "analog": "Analog",
+          "simulate": "Simulate",
+          "control": "Control Scheme",
           "general": "General"
         },
         "properties": {
-          "hotspot-x": {
-            "name": "Origin X",
-            "desc": "X Coordinate (0-1)"
+          "default-axis-deadzone": {
+            "name": "Default Axis Deadzone",
+            "desc": "A value between 0 and 1 that determines the default deadzone for all axes"
           },
-          "hotspot-y": {
-            "name": "Origin Y",
-            "desc": "Y Coordinate (0-1)"
+          "default-joystick-deadzone": {
+            "name": "Default Joystick Deadzone",
+            "desc": "A value between 0 and 1 that determines the default deadzone for all joysticks"
+          },
+          "default-control-scheme": {
+            "name": "Default Control Scheme",
+            "desc": "The default control scheme to use"
+          },
+          "auto-switch-control-scheme": {
+            "name": "Auto Switch Control Scheme",
+            "desc": "Whether to automatically switch control schemes when the user inputs a new control scheme"
           }
         },
         "actions": {
-          "SetSource": {
-            "list-name": "Set Source",
-            "display-text": "Set the source to [i]{0}[/i] (keep sync: [i]{1}[/i], sync size: [i]{2}[/i], fallback: [i]{3}[/i], sync origin: [i]{4}[/i])",
-            "description": "Set the source object",
+          "SetDownInput": {
+            "list-name": "Set Down Input",
+            "display-text": "Set down input [i]{0}[/i] for player [i]{1}[/i] with control scheme [i]{2}[/i]",
+            "description": "Set an input to a down state",
             "params": {
-              "source": {
-                "name": "Source",
-                "desc": "The source object"
+              "name": {
+                "name": "Name",
+                "desc": "The name of the input"
               },
-              "keep-sync": {
-                "name": "Keep Sync",
-                "desc": "Keep the object synced to the source"
+              "player": {
+                "name": "Player",
+                "desc": "The player ID, -1 for all players"
               },
-              "sync-size": {
-                "name": "Sync Size",
-                "desc": "How to sync the size",
-                "items": {
-                  "no-sync": "No Sync",
-                  "sprite-size": "Sync with Sprite Size",
-                  "image-size": "Sync with Image Size"
-                }
-              },
-              "fallback": {
-                "name": "Fallback",
-                "desc": "If keeping sync, what to do if source is destroyed",
-                "items": {
-                  "item1": "Destroy with source",
-                  "item2": "Fallback on another instance or destroy",
-                  "item3": "Fallback on another instance or reset",
-                  "item4": "Reset image"
-                }
-              },
-              "sync-origin": {
-                "name": "Sync Origin",
-                "desc": "Wether to sync the origin"
+              "control-scheme": {
+                "name": "Control Scheme",
+                "desc": "The control scheme ID"
               }
             }
           },
-          "SetHotspot": {
-            "list-name": "Set Origin",
-            "display-text": "Set the origin to [i]{0}[/i], [i]{1}[/i]",
-            "description": "Set the origin",
+          "SetUpInput": {
+            "list-name": "Set Up Input",
+            "display-text": "Set up input [i]{0}[/i] for player [i]{1}[/i] with control scheme [i]{2}[/i]",
+            "description": "Set an input to an up state",
             "params": {
-              "hotspot-x": {
-                "name": "Origin X",
-                "desc": "The origin y coordinate (0-1)"
+              "name": {
+                "name": "Name",
+                "desc": "The name of the input"
               },
-              "hotspot-y": {
-                "name": "Origin Y",
-                "desc": "The origin x coordinate (0-1)"
+              "player": {
+                "name": "Player",
+                "desc": "The player ID, -1 for all players"
+              },
+              "control-scheme": {
+                "name": "Control Scheme",
+                "desc": "The control scheme ID"
+              }
+            }
+          },
+          "SimulateDownInput": {
+            "list-name": "Simulate Down Input",
+            "display-text": "Simulate down input [i]{0}[/i] for player [i]{1}[/i]",
+            "description": "This only triggers the down event, it does not set the input to a down state",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the input"
+              },
+              "player": {
+                "name": "Player",
+                "desc": "The player ID, -1 for all players"
+              }
+            }
+          },
+          "SimulateUpInput": {
+            "list-name": "Simulate Up Input",
+            "display-text": "Simulate up input [i]{0}[/i] for player [i]{1}[/i]",
+            "description": "This only triggers the up event, it does not set the input to an up state",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the input"
+              },
+              "player": {
+                "name": "Player",
+                "desc": "The player ID, -1 for all players"
+              }
+            }
+          },
+          "SetAxisValue": {
+            "list-name": "Set Axis Value",
+            "display-text": "Set axis [i]{0}[/i] to [i]{1}[/i] for player [i]{2}[/i] with control scheme [i]{3}[/i]",
+            "description": "Set an axis to a value",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the input"
+              },
+              "value": {
+                "name": "Value",
+                "desc": "The value of the axis from -1 to 1"
+              },
+              "player": {
+                "name": "Player",
+                "desc": "The player ID, -1 for all players"
+              },
+              "control-scheme": {
+                "name": "Control Scheme",
+                "desc": "The control scheme ID"
+              }
+            }
+          },
+          "SetJoystickValue": {
+            "list-name": "Set Joystick Value",
+            "display-text": "Set joystick [i]{0}[/i] to [i]{1}[/i], [i]{2}[/i] for player [i]{3}[/i] with control scheme [i]{4}[/i]",
+            "description": "Set a joystick to a value",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the input"
+              },
+              "x": {
+                "name": "X",
+                "desc": "The X value of the joystick from -1 to 1"
+              },
+              "y": {
+                "name": "Y",
+                "desc": "The Y value of the joystick from -1 to 1"
+              },
+              "player": {
+                "name": "Player",
+                "desc": "The player ID, -1 for all players"
+              },
+              "control-scheme": {
+                "name": "Control Scheme",
+                "desc": "The control scheme ID"
+              }
+            }
+          },
+          "SetJoystickValueX": {
+            "list-name": "Set Joystick Value X",
+            "display-text": "Set joystick [i]{0}[/i] X to [i]{1}[/i] for player [i]{2}[/i] with control scheme [i]{3}[/i]",
+            "description": "Set a joystick X value",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the input"
+              },
+              "value": {
+                "name": "Value",
+                "desc": "The value of the joystick from -1 to 1"
+              },
+              "player": {
+                "name": "Player",
+                "desc": "The player ID, -1 for all players"
+              },
+              "control-scheme": {
+                "name": "Control Scheme",
+                "desc": "The control scheme ID"
+              }
+            }
+          },
+          "SetJoystickValueY": {
+            "list-name": "Set Joystick Value Y",
+            "display-text": "Set joystick [i]{0}[/i] Y to [i]{1}[/i] for player [i]{2}[/i] with control scheme [i]{3}[/i]",
+            "description": "Set a joystick Y value",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the input"
+              },
+              "value": {
+                "name": "Value",
+                "desc": "The value of the joystick from -1 to 1"
+              },
+              "player": {
+                "name": "Player",
+                "desc": "The player ID, -1 for all players"
+              },
+              "control-scheme": {
+                "name": "Control Scheme",
+                "desc": "The control scheme ID"
+              }
+            }
+          },
+          "SetControlScheme": {
+            "list-name": "Set Control Scheme",
+            "display-text": "Set control scheme [i]{0}[/i] for player [i]{1}[/i]",
+            "description": "Switch to a control scheme",
+            "params": {
+              "control-scheme": {
+                "name": "Control Scheme",
+                "desc": "The control scheme ID"
+              },
+              "player": {
+                "name": "Player",
+                "desc": "The player ID, -1 for all players"
+              }
+            }
+          },
+          "SetAutoSwitchControlScheme": {
+            "list-name": "Set Auto Switch Control Scheme",
+            "display-text": "Set auto switch to [i]{1}[/i] for player [i]{0}[/i]",
+            "description": "Enable or disable auto switch",
+            "params": {
+              "player": {
+                "name": "Player",
+                "desc": "The player ID, -1 for all players"
+              },
+              "enabled": {
+                "name": "Enabled",
+                "desc": "Whether auto switch is enabled"
+              }
+            }
+          },
+          "SetDefaultAxisDeadzone": {
+            "list-name": "Set Default Axis Deadzone",
+            "display-text": "Set default axis deadzone to [i]{0}[/i]",
+            "description": "Set the default deadzone for all axes that don't have a custom deadzone set",
+            "params": {
+              "deadzone": {
+                "name": "Deadzone",
+                "desc": "The default deadzone for all axes"
+              }
+            }
+          },
+          "SetDefaultJoystickDeadzone": {
+            "list-name": "Set Default Joystick Deadzone",
+            "display-text": "Set default joystick deadzone to [i]{0}[/i]",
+            "description": "Set the default deadzone for all joysticks that don't have a custom deadzone set",
+            "params": {
+              "deadzone": {
+                "name": "Deadzone",
+                "desc": "The default deadzone for all joysticks"
+              }
+            }
+          },
+          "SetAxisDeadzone": {
+            "list-name": "Set Axis Deadzone",
+            "display-text": "Set axis [i]{0}[/i] deadzone to [i]{1}[/i]",
+            "description": "Set the deadzone for an axis",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the input"
+              },
+              "deadzone": {
+                "name": "Deadzone",
+                "desc": "The deadzone for the axis (0-1). Negative value to use default deadzone"
+              }
+            }
+          },
+          "SetJoystickDeadzone": {
+            "list-name": "Set Joystick Deadzone",
+            "display-text": "Set joystick [i]{0}[/i] deadzone to [i]{1}[/i]",
+            "description": "Set the deadzone for a joystick",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the input"
+              },
+              "deadzone": {
+                "name": "Deadzone",
+                "desc": "The deadzone for the joystick (0-1). Negative value to use default deadzone"
               }
             }
           }
         },
         "conditions": {
-          "HasSource": {
-            "list-name": "Has source",
-            "display-text": "Has source",
-            "description": "Test if the object has a source object",
-            "params": {}
+          "IsDown": {
+            "list-name": "Is Down",
+            "display-text": "Is [i]{0}[/i] down for player [i]{1}[/i]",
+            "description": "Test if an input is down",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the input"
+              },
+              "player": {
+                "name": "Player",
+                "desc": "The player ID, -1 for all players"
+              }
+            }
           },
-          "KeepsSync": {
-            "list-name": "Keeps sync",
-            "display-text": "Keeps sync",
-            "description": "Test if the object keeps sync with the source object",
-            "params": {}
+          "OnDown": {
+            "list-name": "On Down",
+            "display-text": "On [i]{0}[/i] down for player [i]{1}[/i]",
+            "description": "Trigger an event when an input is pressed down",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the input"
+              },
+              "player": {
+                "name": "Player",
+                "desc": "The player ID, -1 for all players"
+              }
+            }
+          },
+          "OnUp": {
+            "list-name": "On Up",
+            "display-text": "On [i]{0}[/i] up for player [i]{1}[/i]",
+            "description": "Trigger an event when an input is released",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the input"
+              },
+              "player": {
+                "name": "Player",
+                "desc": "The player ID, -1 for all players"
+              }
+            }
+          },
+          "OnAnyDown": {
+            "list-name": "On Any Down",
+            "display-text": "On any input down for player [i]{0}[/i]",
+            "description": "Trigger an event when any input is pressed down",
+            "params": {
+              "player": {
+                "name": "Player",
+                "desc": "The player ID, -1 for all players"
+              }
+            }
+          },
+          "OnAnyUp": {
+            "list-name": "On Any Up",
+            "display-text": "On any input up for player [i]{0}[/i]",
+            "description": "Trigger an event when any input is released",
+            "params": {
+              "player": {
+                "name": "Player",
+                "desc": "The player ID, -1 for all players"
+              }
+            }
+          },
+          "IsControlSchemeEnabled": {
+            "list-name": "Is Control Scheme Enabled",
+            "display-text": "Is control scheme [i]{0}[/i] enabled for player [i]{1}[/i]",
+            "description": "Test if a control scheme is enabled",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the control scheme"
+              },
+              "player": {
+                "name": "Player",
+                "desc": "The player ID, -1 for all players"
+              }
+            }
+          },
+          "IsAxisOutsideDeadzone": {
+            "list-name": "Is Axis Outside Deadzone",
+            "display-text": "Is axis [i]{0}[/i] outside deadzone for player [i]{1}[/i]",
+            "description": "Test if an axis is outside its deadzone",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the axis"
+              },
+              "player": {
+                "name": "Player",
+                "desc": "The player ID, -1 for all players"
+              }
+            }
+          },
+          "IsJoystickOutsideDeadzone": {
+            "list-name": "Is Joystick Outside Deadzone",
+            "display-text": "Is joystick [i]{0}[/i] outside deadzone for player [i]{1}[/i]",
+            "description": "Test if a joystick is outside its deadzone",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the joystick"
+              },
+              "player": {
+                "name": "Player",
+                "desc": "The player ID, -1 for all players"
+              }
+            }
           }
         },
         "expressions": {
-          "HotspotX": {
-            "translated-name": "HotspotX",
-            "description": "Get the hotspot x coordinate",
+          "LastInput": {
+            "translated-name": "LastInput",
+            "description": "Get the name of the last input from trigger",
             "params": {}
           },
-          "HotspotY": {
-            "translated-name": "HotspotY",
-            "description": "Get the hotspot y coordinate",
+          "LastPlayer": {
+            "translated-name": "LastPlayer",
+            "description": "Get the ID of the last player from trigger",
             "params": {}
+          },
+          "GetAxis": {
+            "translated-name": "GetAxis",
+            "description": "Get the value of an axis",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the axis"
+              },
+              "player": {
+                "name": "Player",
+                "desc": "The player ID"
+              }
+            }
+          },
+          "GetJoystickX": {
+            "translated-name": "GetJoystickX",
+            "description": "Get the x value of a joystick",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the joystick"
+              },
+              "player": {
+                "name": "Player",
+                "desc": "The player ID"
+              }
+            }
+          },
+          "GetJoystickY": {
+            "translated-name": "GetJoystickY",
+            "description": "Get the y value of a joystick",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the joystick"
+              },
+              "player": {
+                "name": "Player",
+                "desc": "The player ID"
+              }
+            }
+          },
+          "GetControlScheme": {
+            "translated-name": "GetControlScheme",
+            "description": "Get the name of the current control scheme",
+            "params": {
+              "player": {
+                "name": "Player",
+                "desc": "The player ID"
+              }
+            }
           }
         }
       }

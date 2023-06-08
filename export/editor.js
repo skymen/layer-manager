@@ -1,57 +1,77 @@
 const SDK = self.SDK;
 
 const PLUGIN_INFO = {
-  "id": "skymen_Shell",
-  "version": "1.0.0.2",
-  "category": "general",
+  "id": "skymen_better_input_manager",
+  "version": "1.0.0.0",
+  "category": "input",
   "author": "skymen",
-  "type": "world",
+  "type": "object",
   "addonType": "plugin",
   "info": {
     "Set": {
-      "IsResizable": true,
-      "IsRotatable": true,
+      "IsResizable": false,
+      "IsRotatable": false,
       "Is3D": false,
       "HasImage": false,
       "DefaultImageURL": null,
       "IsTiled": false,
       "IsDeprecated": false,
-      "IsSingleGlobal": false,
-      "SupportsZElevation": true,
-      "SupportsColor": true,
-      "SupportsEffects": true,
-      "MustPreDraw": true,
+      "IsSingleGlobal": true,
+      "SupportsZElevation": false,
+      "SupportsColor": false,
+      "SupportsEffects": false,
+      "MustPreDraw": false,
       "CanBeBundled": true
     },
     "AddCommonACEs": {
-      "Position": true,
-      "SceneGraph": true,
-      "Size": true,
-      "Angle": true,
-      "Appearance": true,
-      "ZOrder": true
+      "Position": false,
+      "SceneGraph": false,
+      "Size": false,
+      "Angle": false,
+      "Appearance": false,
+      "ZOrder": false
     }
   },
   "properties": [
     {
       "type": "float",
-      "id": "hotspot-x",
-      "value": 0.5,
+      "id": "default-axis-deadzone",
+      "value": 0.2,
       "options": {
         "interpolatable": false
       },
-      "name": "Origin X",
-      "desc": "X Coordinate (0-1)"
+      "name": "Default Axis Deadzone",
+      "desc": "A value between 0 and 1 that determines the default deadzone for all axes"
     },
     {
       "type": "float",
-      "id": "hotspot-y",
-      "value": 0.5,
+      "id": "default-joystick-deadzone",
+      "value": 0.2,
       "options": {
         "interpolatable": false
       },
-      "name": "Origin Y",
-      "desc": "Y Coordinate (0-1)"
+      "name": "Default Joystick Deadzone",
+      "desc": "A value between 0 and 1 that determines the default deadzone for all joysticks"
+    },
+    {
+      "type": "text",
+      "id": "default-control-scheme",
+      "value": "",
+      "options": {
+        "interpolatable": false
+      },
+      "name": "Default Control Scheme",
+      "desc": "The default control scheme to use"
+    },
+    {
+      "type": "check",
+      "id": "auto-switch-control-scheme",
+      "value": true,
+      "options": {
+        "interpolatable": false
+      },
+      "name": "Auto Switch Control Scheme",
+      "desc": "Whether to automatically switch control schemes when the user inputs a new control scheme"
     }
   ]
 }
@@ -101,53 +121,18 @@ P_C.Type = class extends SDK.ITypeBase {
   }
 };
 
-P_C.Instance = class extends SDK.IWorldInstanceBase {
+P_C.Instance = class extends SDK.IInstanceBase {
   constructor(sdkType, inst) {
     super(sdkType, inst);
   }
 
   Release() {}
 
-  OnCreate() {
-    this.UpdateOrigin();
-  }
+  OnCreate() {}
 
   OnPlacedInLayout() {}
 
-  Draw(iRenderer, iDrawParams) {
-    // draw a box with line width 4
-    iRenderer.SetColorFillMode();
-    iRenderer.PushLineWidth(4);
-    iRenderer.PushLineCap("square");
-    iRenderer.SetColor(this._inst.GetColor());
-    iRenderer.LineQuad(this._inst.GetQuad());
-    iRenderer.PopLineWidth();
-    iRenderer.PopLineCap();
-  }
-
-  IsOriginalSizeKnown() {
-    return false;
-  }
-
-  HasDoubleTapHandler() {
-    return false;
-  }
-
-  OnDoubleTap() {}
-
-  UpdateOrigin() {
-    this._inst.SetOrigin(
-      this._inst.GetPropertyValue("hotspot-x"),
-      this._inst.GetPropertyValue("hotspot-y")
-    );
-  }
-
-  OnPropertyChanged(id, value) {
-    // handle hotspot-x and hotspot-y properties
-    if (id === "hotspot-x" || id === "hotspot-y") {
-      this.UpdateOrigin();
-    }
-  }
+  OnPropertyChanged(id, value) {}
 
   LoadC2Property(name, valueString) {
     return false; // not handled

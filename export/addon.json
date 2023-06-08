@@ -1,13 +1,13 @@
 {
   "is-c3-addon": true,
   "type": "plugin",
-  "name": "Empty Shell",
-  "id": "skymen_Shell",
-  "version": "1.0.0.2",
+  "name": "Better Input Manager",
+  "id": "skymen_better_input_manager",
+  "version": "1.0.0.0",
   "author": "skymen",
   "website": "https://www.construct.net",
   "documentation": "https://www.construct.net",
-  "description": "An empty shell addon that can be given a texture",
+  "description": "An improved input manager",
   "editor-scripts": [
     "editor.js"
   ],

@@ -1,73 +1,160 @@
 {
-  "general": {
+  "digital": {
     "conditions": [
       {
-        "id": "HasSource",
-        "scriptName": "HasSource",
-        "highlight": false,
-        "params": []
-      },
-      {
-        "id": "KeepsSync",
-        "scriptName": "KeepsSync",
-        "highlight": false,
-        "params": []
-      }
-    ],
-    "actions": [
-      {
-        "id": "SetSource",
-        "scriptName": "SetSource",
+        "id": "IsDown",
+        "scriptName": "IsDown",
         "highlight": true,
         "params": [
           {
-            "id": "source",
-            "type": "object",
-            "allowedPluginIds": [
-              "Sprite"
-            ]
+            "id": "name",
+            "type": "string",
+            "value": ""
           },
           {
-            "id": "keep-sync",
-            "type": "boolean"
-          },
-          {
-            "id": "sync-size",
-            "type": "combo",
-            "items": [
-              "no-sync",
-              "sprite-size",
-              "image-size"
-            ]
-          },
-          {
-            "id": "fallback",
-            "type": "combo",
-            "items": [
-              "item1",
-              "item2",
-              "item3",
-              "item4"
-            ]
-          },
-          {
-            "id": "sync-origin",
-            "type": "boolean"
+            "id": "player",
+            "type": "number",
+            "value": 0
           }
         ]
       },
       {
-        "id": "SetHotspot",
-        "scriptName": "SetHotspot",
+        "id": "OnDown",
+        "scriptName": "OnDown",
+        "highlight": false,
+        "isTrigger": true,
+        "params": [
+          {
+            "id": "name",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "OnUp",
+        "scriptName": "OnUp",
+        "highlight": false,
+        "isTrigger": true,
+        "params": [
+          {
+            "id": "name",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "OnAnyDown",
+        "scriptName": "OnAnyDown",
+        "highlight": false,
+        "isTrigger": true,
+        "params": [
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "OnAnyUp",
+        "scriptName": "OnAnyUp",
+        "highlight": false,
+        "isTrigger": true,
+        "params": [
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "SetDownInput",
+        "scriptName": "SetDownInput",
         "highlight": true,
         "params": [
           {
-            "id": "hotspot-x",
+            "id": "name",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "player",
             "type": "number",
             "value": 0
           },
           {
-            "id": "hotspot-y",
+            "id": "control-scheme",
+            "type": "string",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "id": "SetUpInput",
+        "scriptName": "SetUpInput",
+        "highlight": true,
+        "params": [
+          {
+            "id": "name",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          },
+          {
+            "id": "control-scheme",
+            "type": "string",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "id": "SimulateDownInput",
+        "scriptName": "SimulateDownInput",
+        "highlight": false,
+        "params": [
+          {
+            "id": "name",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "SimulateUpInput",
+        "scriptName": "SimulateUpInput",
+        "highlight": false,
+        "params": [
+          {
+            "id": "name",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "player",
             "type": "number",
             "value": 0
           }
@@ -76,21 +163,374 @@
     ],
     "expressions": [
       {
-        "id": "HotspotX",
-        "scriptName": "HotspotX",
-        "expressionName": "HotspotX",
+        "id": "LastInput",
+        "scriptName": "LastInput",
+        "expressionName": "LastInput",
         "highlight": false,
-        "returnType": "number",
+        "returnType": "string",
         "params": []
       },
       {
-        "id": "HotspotY",
-        "scriptName": "HotspotY",
-        "expressionName": "HotspotY",
+        "id": "LastPlayer",
+        "scriptName": "LastPlayer",
+        "expressionName": "LastPlayer",
         "highlight": false,
         "returnType": "number",
         "params": []
       }
     ]
+  },
+  "analog": {
+    "conditions": [
+      {
+        "id": "IsAxisOutsideDeadzone",
+        "scriptName": "IsAxisOutsideDeadzone",
+        "highlight": true,
+        "params": [
+          {
+            "id": "name",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "IsJoystickOutsideDeadzone",
+        "scriptName": "IsJoystickOutsideDeadzone",
+        "highlight": true,
+        "params": [
+          {
+            "id": "name",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "SetAxisValue",
+        "scriptName": "SetAxisValue",
+        "highlight": false,
+        "params": [
+          {
+            "id": "name",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "value",
+            "type": "number",
+            "value": 0
+          },
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          },
+          {
+            "id": "control-scheme",
+            "type": "string",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "id": "SetJoystickValue",
+        "scriptName": "SetJoystickValue",
+        "highlight": true,
+        "params": [
+          {
+            "id": "name",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "x",
+            "type": "number",
+            "value": 0
+          },
+          {
+            "id": "y",
+            "type": "number",
+            "value": 0
+          },
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          },
+          {
+            "id": "control-scheme",
+            "type": "string",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "id": "SetJoystickValueX",
+        "scriptName": "SetJoystickValueX",
+        "highlight": false,
+        "params": [
+          {
+            "id": "name",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "value",
+            "type": "number",
+            "value": 0
+          },
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          },
+          {
+            "id": "control-scheme",
+            "type": "string",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "id": "SetJoystickValueY",
+        "scriptName": "SetJoystickValueY",
+        "highlight": false,
+        "params": [
+          {
+            "id": "name",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "value",
+            "type": "number",
+            "value": 0
+          },
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          },
+          {
+            "id": "control-scheme",
+            "type": "string",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "id": "SetDefaultAxisDeadzone",
+        "scriptName": "SetDefaultAxisDeadzone",
+        "highlight": false,
+        "params": [
+          {
+            "id": "deadzone",
+            "type": "number",
+            "value": 0.2
+          }
+        ]
+      },
+      {
+        "id": "SetDefaultJoystickDeadzone",
+        "scriptName": "SetDefaultJoystickDeadzone",
+        "highlight": false,
+        "params": [
+          {
+            "id": "deadzone",
+            "type": "number",
+            "value": 0.2
+          }
+        ]
+      },
+      {
+        "id": "SetAxisDeadzone",
+        "scriptName": "SetAxisDeadzone",
+        "highlight": false,
+        "params": [
+          {
+            "id": "name",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "deadzone",
+            "type": "number",
+            "value": 0.2
+          }
+        ]
+      },
+      {
+        "id": "SetJoystickDeadzone",
+        "scriptName": "SetJoystickDeadzone",
+        "highlight": false,
+        "params": [
+          {
+            "id": "name",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "deadzone",
+            "type": "number",
+            "value": 0.2
+          }
+        ]
+      }
+    ],
+    "expressions": [
+      {
+        "id": "GetAxis",
+        "scriptName": "GetAxis",
+        "expressionName": "GetAxis",
+        "highlight": false,
+        "returnType": "number",
+        "params": [
+          {
+            "id": "name",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "GetJoystickX",
+        "scriptName": "GetJoystickX",
+        "expressionName": "GetJoystickX",
+        "highlight": false,
+        "returnType": "number",
+        "params": [
+          {
+            "id": "name",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "GetJoystickY",
+        "scriptName": "GetJoystickY",
+        "expressionName": "GetJoystickY",
+        "highlight": false,
+        "returnType": "number",
+        "params": [
+          {
+            "id": "name",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          }
+        ]
+      }
+    ]
+  },
+  "simulate": {
+    "conditions": [],
+    "actions": [],
+    "expressions": []
+  },
+  "control": {
+    "conditions": [
+      {
+        "id": "IsControlSchemeEnabled",
+        "scriptName": "IsControlSchemeEnabled",
+        "highlight": true,
+        "params": [
+          {
+            "id": "name",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "SetControlScheme",
+        "scriptName": "SetControlScheme",
+        "highlight": true,
+        "params": [
+          {
+            "id": "control-scheme",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "SetAutoSwitchControlScheme",
+        "scriptName": "SetAutoSwitchControlScheme",
+        "highlight": false,
+        "params": [
+          {
+            "id": "player",
+            "type": "number",
+            "value": -1
+          },
+          {
+            "id": "enabled",
+            "type": "boolean",
+            "value": true
+          }
+        ]
+      }
+    ],
+    "expressions": [
+      {
+        "id": "GetControlScheme",
+        "scriptName": "GetControlScheme",
+        "expressionName": "GetControlScheme",
+        "highlight": false,
+        "returnType": "string",
+        "params": [
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          }
+        ]
+      }
+    ]
+  },
+  "general": {
+    "conditions": [],
+    "actions": [],
+    "expressions": []
   }
 }
