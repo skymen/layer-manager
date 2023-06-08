@@ -419,6 +419,20 @@
               }
             }
           },
+          "GetRawAxis": {
+            "translated-name": "GetRawAxis",
+            "description": "Get the raw value of an axis",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the axis"
+              },
+              "player": {
+                "name": "Player",
+                "desc": "The player ID"
+              }
+            }
+          },
           "GetJoystickX": {
             "translated-name": "GetJoystickX",
             "description": "Get the x value of a joystick",
@@ -433,9 +447,79 @@
               }
             }
           },
+          "GetRawJoystickX": {
+            "translated-name": "GetRawJoystickX",
+            "description": "Get the raw x value of a joystick",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the joystick"
+              },
+              "player": {
+                "name": "Player",
+                "desc": "The player ID"
+              }
+            }
+          },
           "GetJoystickY": {
             "translated-name": "GetJoystickY",
             "description": "Get the y value of a joystick",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the joystick"
+              },
+              "player": {
+                "name": "Player",
+                "desc": "The player ID"
+              }
+            }
+          },
+          "GetRawJoystickY": {
+            "translated-name": "GetRawJoystickY",
+            "description": "Get the raw y value of a joystick",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the joystick"
+              },
+              "player": {
+                "name": "Player",
+                "desc": "The player ID"
+              }
+            }
+          },
+          "GetJoystickAngle": {
+            "translated-name": "GetJoystickAngle",
+            "description": "Get the angle of a joystick",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the joystick"
+              },
+              "player": {
+                "name": "Player",
+                "desc": "The player ID"
+              }
+            }
+          },
+          "GetJoystickMagnitude": {
+            "translated-name": "GetJoystickMagnitude",
+            "description": "Get the magnitude of a joystick",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the joystick"
+              },
+              "player": {
+                "name": "Player",
+                "desc": "The player ID"
+              }
+            }
+          },
+          "GetRawJoystickMagnitude": {
+            "translated-name": "GetRawJoystickMagnitude",
+            "description": "Get the raw magnitude of a joystick",
             "params": {
               "name": {
                 "name": "Name",

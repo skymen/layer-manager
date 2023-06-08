@@ -691,20 +691,59 @@ function getInstanceJs() {
       return this.lastPlayer;
     }
     _GetAxis(name, player) {
-      if (player >= 0) {
+      if (player >= 0 && this.IsAxisOutsideDeadzone(name, player)) {
         return this.GetAxisInputState(name, player);
       }
       return 0;
     }
     _GetJoystickX(name, player) {
-      if (player >= 0) {
+      if (player >= 0 && this.IsJoystickOutsideDeadzone(name, player)) {
         return this.GetJoystickInputState(name, player).x;
       }
       return 0;
     }
     _GetJoystickY(name, player) {
+      if (player >= 0 && this.IsJoystickOutsideDeadzone(name, player)) {
+        return this.GetJoystickInputState(name, player).y;
+      }
+      return 0;
+    }
+    _GetRawAxis(name, player) {
+      if (player >= 0) {
+        return this.GetAxisInputState(name, player);
+      }
+      return 0;
+    }
+    _GetRawJoystickX(name, player) {
+      if (player >= 0) {
+        return this.GetJoystickInputState(name, player).x;
+      }
+      return 0;
+    }
+    _GetRawJoystickY(name, player) {
       if (player >= 0) {
         return this.GetJoystickInputState(name, player).y;
+      }
+      return 0;
+    }
+    _GetJoystickAngle(name, player) {
+      if (player >= 0) {
+        const joystick = this.GetJoystickInputState(name, player);
+        return Math.atan2(joystick.y, joystick.x) * (180 / Math.PI);
+      }
+      return 0;
+    }
+    _GetJoystickMagnitude(name, player) {
+      if (player >= 0 && this.IsJoystickOutsideDeadzone(name, player)) {
+        const joystick = this.GetJoystickInputState(name, player);
+        return Math.sqrt(joystick.x * joystick.x + joystick.y * joystick.y);
+      }
+      return 0;
+    }
+    _GetRawJoystickMagnitude(name, player) {
+      if (player >= 0) {
+        const joystick = this.GetJoystickInputState(name, player);
+        return Math.sqrt(joystick.x * joystick.x + joystick.y * joystick.y);
       }
       return 0;
     }

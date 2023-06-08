@@ -411,6 +411,25 @@
         ]
       },
       {
+        "id": "GetRawAxis",
+        "scriptName": "GetRawAxis",
+        "expressionName": "GetRawAxis",
+        "highlight": false,
+        "returnType": "number",
+        "params": [
+          {
+            "id": "name",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          }
+        ]
+      },
+      {
         "id": "GetJoystickX",
         "scriptName": "GetJoystickX",
         "expressionName": "GetJoystickX",
@@ -430,9 +449,104 @@
         ]
       },
       {
+        "id": "GetRawJoystickX",
+        "scriptName": "GetRawJoystickX",
+        "expressionName": "GetRawJoystickX",
+        "highlight": false,
+        "returnType": "number",
+        "params": [
+          {
+            "id": "name",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          }
+        ]
+      },
+      {
         "id": "GetJoystickY",
         "scriptName": "GetJoystickY",
         "expressionName": "GetJoystickY",
+        "highlight": false,
+        "returnType": "number",
+        "params": [
+          {
+            "id": "name",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "GetRawJoystickY",
+        "scriptName": "GetRawJoystickY",
+        "expressionName": "GetRawJoystickY",
+        "highlight": false,
+        "returnType": "number",
+        "params": [
+          {
+            "id": "name",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "GetJoystickAngle",
+        "scriptName": "GetJoystickAngle",
+        "expressionName": "GetJoystickAngle",
+        "highlight": false,
+        "returnType": "number",
+        "params": [
+          {
+            "id": "name",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "GetJoystickMagnitude",
+        "scriptName": "GetJoystickMagnitude",
+        "expressionName": "GetJoystickMagnitude",
+        "highlight": false,
+        "returnType": "number",
+        "params": [
+          {
+            "id": "name",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "GetRawJoystickMagnitude",
+        "scriptName": "GetRawJoystickMagnitude",
+        "expressionName": "GetRawJoystickMagnitude",
         "highlight": false,
         "returnType": "number",
         "params": [
