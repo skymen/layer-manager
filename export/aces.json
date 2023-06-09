@@ -221,7 +221,7 @@
       {
         "id": "SetAxisValue",
         "scriptName": "SetAxisValue",
-        "highlight": false,
+        "highlight": true,
         "params": [
           {
             "id": "name",

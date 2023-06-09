@@ -365,12 +365,12 @@ function getInstanceJs() {
 
     GetPlayerActiveControlScheme(player) {
       this.AssertPlayerExists(player);
-      return this.playerData
-        .get(player)
-        .controlSchemes.keys()
-        .find((key) => {
-          return this.GetControlSchemeEnabled(player, key);
-        });
+      for (const [key, value] of this.playerData.get(player).controlSchemes) {
+        if (this.GetControlSchemeEnabled(player, key)) {
+          return key;
+        }
+      }
+      return this.defaultControlScheme;
     }
 
     SchemeOrPlayerActiveControlScheme(player, controlScheme) {

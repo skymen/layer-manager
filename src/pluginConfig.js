@@ -3,7 +3,7 @@ module.exports = {
   addonType: "plugin",
   id: "skymen_better_input_manager",
   name: "Better Input Manager",
-  version: "1.0.0.1",
+  version: "1.0.0.2",
   category: "input",
   author: "skymen",
   website: "https://www.construct.net",
@@ -208,7 +208,7 @@ module.exports = {
       category: "analog",
       forward: "_SetAxisValue",
       autoScriptInterface: true,
-      highlight: false,
+      highlight: true,
       params: [
         {
           id: "name",
