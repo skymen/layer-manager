@@ -3,7 +3,7 @@ module.exports = {
   addonType: "plugin",
   id: "skymen_better_input_manager",
   name: "Better Input Manager",
-  version: "1.0.0.2",
+  version: "1.0.0.3",
   category: "input",
   author: "skymen",
   website: "https://www.construct.net",
@@ -84,6 +84,7 @@ module.exports = {
     simulate: "Simulate",
     control: "Control Scheme",
     general: "General",
+    wire: "Wire",
   },
   Acts: {
     SetDownInput: {
@@ -508,6 +509,31 @@ module.exports = {
       listName: "Set Joystick Deadzone",
       displayText: "Set joystick [i]{0}[/i] deadzone to [i]{1}[/i]",
       description: "Set the deadzone for a joystick",
+    },
+    WireTo: {
+      category: "wire",
+      forward: "_WireTo",
+      autoScriptInterface: true,
+      highlight: false,
+      params: [
+        {
+          id: "name",
+          name: "Name",
+          desc: "The name of the wire",
+          type: "string",
+          value: "",
+        },
+        {
+          id: "player",
+          name: "Player",
+          desc: "The player ID, -1 for all players",
+          type: "number",
+          value: 0,
+        },
+      ],
+      listName: "Map Wire To Player",
+      displayText: "Map wire [i]{0}[/i] to player [i]{1}[/i]",
+      description: "Map a wire to a player",
     },
   },
   Cnds: {
@@ -954,6 +980,23 @@ module.exports = {
       ],
       returnType: "string",
       description: "Get the name of the current control scheme",
+    },
+    WireFrom: {
+      category: "wire",
+      forward: "_WireFrom",
+      autoScriptInterface: true,
+      highlight: false,
+      params: [
+        {
+          id: "name",
+          name: "Name",
+          desc: "The name of the wire",
+          type: "string",
+          value: "",
+        },
+      ],
+      returnType: "number",
+      description: "Wire a control scheme to a player using an id",
     },
   },
 };

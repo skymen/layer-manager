@@ -12,7 +12,8 @@
           "analog": "Analog",
           "simulate": "Simulate",
           "control": "Control Scheme",
-          "general": "General"
+          "general": "General",
+          "wire": "Wire"
         },
         "properties": {
           "default-axis-deadzone": {
@@ -278,6 +279,21 @@
                 "desc": "The deadzone for the joystick (0-1). Negative value to use default deadzone"
               }
             }
+          },
+          "WireTo": {
+            "list-name": "Map Wire To Player",
+            "display-text": "Map wire [i]{0}[/i] to player [i]{1}[/i]",
+            "description": "Map a wire to a player",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the wire"
+              },
+              "player": {
+                "name": "Player",
+                "desc": "The player ID, -1 for all players"
+              }
+            }
           }
         },
         "conditions": {
@@ -538,6 +554,16 @@
               "player": {
                 "name": "Player",
                 "desc": "The player ID"
+              }
+            }
+          },
+          "WireFrom": {
+            "translated-name": "WireFrom",
+            "description": "Wire a control scheme to a player using an id",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the wire"
               }
             }
           }

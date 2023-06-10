@@ -19,6 +19,7 @@ function getInstanceJs() {
       this.axisInputData = new Map();
       this.joystickInputData = new Map();
       this.playerData = new Map();
+      this.wireData = new Map();
 
       this.lastDigitalInput = "";
       this.lastPlayer = null;
@@ -622,6 +623,9 @@ function getInstanceJs() {
       value = this.Clamp(value, -1, 1);
       this.SetJoystickInputDeadzone(name, value);
     }
+    _WireTo(name, player) {
+      this.wireData.set(name, player);
+    }
     _IsDown(name, player) {
       if (player >= 0) {
         return this.GetDigitalInputState(name, player);
@@ -752,6 +756,13 @@ function getInstanceJs() {
         return this.GetPlayerActiveControlScheme(player);
       }
       return "";
+    }
+    _WireFrom(name) {
+      if (this.wireData.has(name)) {
+        return this.wireData.get(name);
+      } else {
+        return 0;
+      }
     }
   };
 }

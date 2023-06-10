@@ -2,7 +2,7 @@ const SDK = self.SDK;
 
 const PLUGIN_INFO = {
   "id": "skymen_better_input_manager",
-  "version": "1.0.0.2",
+  "version": "1.0.0.3",
   "category": "input",
   "author": "skymen",
   "type": "object",

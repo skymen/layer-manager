@@ -646,5 +646,43 @@
     "conditions": [],
     "actions": [],
     "expressions": []
+  },
+  "wire": {
+    "conditions": [],
+    "actions": [
+      {
+        "id": "WireTo",
+        "scriptName": "WireTo",
+        "highlight": false,
+        "params": [
+          {
+            "id": "name",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          }
+        ]
+      }
+    ],
+    "expressions": [
+      {
+        "id": "WireFrom",
+        "scriptName": "WireFrom",
+        "expressionName": "WireFrom",
+        "highlight": false,
+        "returnType": "number",
+        "params": [
+          {
+            "id": "name",
+            "type": "string",
+            "value": ""
+          }
+        ]
+      }
+    ]
   }
 }
