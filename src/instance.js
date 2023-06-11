@@ -86,7 +86,7 @@ function getInstanceJs() {
       return this.defaultControlScheme;
     }
 
-    SchemeOrPlayerActiveControlScheme(player, controlScheme) {
+    SchemeOrPlayerActiveControlScheme(controlScheme, player) {
       return typeof controlScheme === "string"
         ? controlScheme
         : this.GetPlayerActiveControlScheme(player);
@@ -143,7 +143,27 @@ function getInstanceJs() {
         .get(controlScheme);
     }
 
-    SetDigitalInputState(inputName, player, controlScheme, state) {
+    IsAnyDigitalInputDown(player, controlScheme) {
+      controlScheme = this.SchemeOrPlayerActiveControlScheme(
+        controlScheme,
+        player
+      );
+      this.AssertPlayerExists(player);
+      for (const [key, value] of this.digitalInputData) {
+        if (this.GetDigitalInputState(key, player, controlScheme)) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    SetDigitalInputState(
+      inputName,
+      player,
+      controlScheme,
+      state,
+      preventAutoSwitch = false
+    ) {
       this.AssertDigitalInputPlayerHasControlScheme(
         inputName,
         player,
@@ -154,7 +174,7 @@ function getInstanceJs() {
         .statePerPlayer.get(player)
         .set(controlScheme, state);
 
-      if (this.GetAutoSwitchControlScheme(player)) {
+      if (this.GetAutoSwitchControlScheme(player) && !preventAutoSwitch) {
         if (state) {
           this.SwithToControlScheme(player, controlScheme);
         }
@@ -211,7 +231,13 @@ function getInstanceJs() {
         .get(controlScheme);
     }
 
-    SetAxisInputState(inputName, player, controlScheme, state) {
+    SetAxisInputState(
+      inputName,
+      player,
+      controlScheme,
+      state,
+      preventAutoSwitch = false
+    ) {
       this.AssertAxisInputPlayerHasControlScheme(
         inputName,
         player,
@@ -222,7 +248,7 @@ function getInstanceJs() {
         .statePerPlayer.get(player)
         .set(controlScheme, state);
 
-      if (this.GetAutoSwitchControlScheme(player)) {
+      if (this.GetAutoSwitchControlScheme(player) && !preventAutoSwitch) {
         let deadzone = this.GetAxisInputDeadzone(inputName);
         if (Math.abs(state) > deadzone) {
           this.SwithToControlScheme(player, controlScheme);
@@ -270,6 +296,20 @@ function getInstanceJs() {
       let deadzone = this.GetAxisInputDeadzone(inputName);
       let state = this.GetAxisInputState(inputName, player, controlScheme);
       return Math.abs(state) > deadzone;
+    }
+
+    IsAnyAxisOutsideDeadzone(player, controlScheme) {
+      controlScheme = this.SchemeOrPlayerActiveControlScheme(
+        controlScheme,
+        player
+      );
+      this.AssertPlayerExists(player);
+      for (const [key, value] of this.axisInputData) {
+        if (this.IsAxisOutsideDeadzone(key, player, controlScheme)) {
+          return true;
+        }
+      }
+      return false;
     }
 
     // ======= JOYSTICK INPUTS =======
@@ -331,7 +371,14 @@ function getInstanceJs() {
         .get(controlScheme);
     }
 
-    SetJoystickInputState(inputName, player, controlScheme, x, y) {
+    SetJoystickInputState(
+      inputName,
+      player,
+      controlScheme,
+      x,
+      y,
+      preventAutoSwitch = false
+    ) {
       this.AssertJoystickInputPlayerHasControlScheme(
         inputName,
         player,
@@ -345,7 +392,7 @@ function getInstanceJs() {
           y,
         });
 
-      if (this.GetAutoSwitchControlScheme(player)) {
+      if (this.GetAutoSwitchControlScheme(player) && !preventAutoSwitch) {
         let deadzone = this.GetJoystickInputDeadzone(inputName);
         if (Math.sqrt(x * x + y * y) > deadzone) {
           this.SwithToControlScheme(player, controlScheme);
@@ -421,6 +468,19 @@ function getInstanceJs() {
       return Math.sqrt(state.x * state.x + state.y * state.y) > deadzone;
     }
 
+    IsAnyJoystickOutsideDeadzone(player, controlScheme) {
+      controlScheme = this.SchemeOrPlayerActiveControlScheme(
+        controlScheme,
+        player
+      );
+      for (let inputName of this.joystickInputData.keys()) {
+        if (this.IsJoystickOutsideDeadzone(inputName, player, controlScheme)) {
+          return true;
+        }
+      }
+      return false;
+    }
+
     // ======= CONTROL SCHEMES =======
 
     AssertControlSchemeExists(player, controlScheme) {
@@ -446,23 +506,27 @@ function getInstanceJs() {
     }
 
     SwithToControlScheme(player, controlScheme) {
-      if (!this.GetControlSchemeEnabled(player, controlScheme)) {
-        this.SetControlSchemeEnabled(player, controlScheme, true);
-        let playerData = this.playerData.get(player);
-        // Disable all other control schemes that are auto managed
-        for (const [key, value] of playerData.controlSchemes) {
-          if (key !== controlScheme) {
-            this.SetControlSchemeEnabled(player, key, true);
-          }
+      this.SetControlSchemeEnabled(player, controlScheme, true);
+      let playerData = this.playerData.get(player);
+      // Disable all other control schemes that are auto managed
+      for (const [key, value] of playerData.controlSchemes) {
+        if (key !== controlScheme) {
+          this.SetControlSchemeEnabled(player, key, false);
         }
       }
     }
 
     // ======= ACES =======
-    _DoSetDownInput(name, player, scheme) {
+    _DoSetDownInput(name, player, scheme, preventAutoSwitch) {
       this.curValue = this.GetDigitalInputState(name, player, scheme);
       if (!this.curValue) {
-        this.SetDigitalInputState(name, player, scheme, true);
+        this.SetDigitalInputState(
+          name,
+          player,
+          scheme,
+          true,
+          preventAutoSwitch
+        );
         if (this.GetControlSchemeEnabled(player, scheme)) {
           this.lastDigitalInput = name;
           this.lastPlayer = player;
@@ -473,12 +537,12 @@ function getInstanceJs() {
         }
       }
     }
-    _SetDownInput(name, player, scheme) {
+    _SetDownInput(name, player, scheme, preventAutoSwitch) {
       if (player >= 0) {
-        this._DoSetDownInput(name, player, scheme);
+        this._DoSetDownInput(name, player, scheme, preventAutoSwitch);
       } else {
         this.ForEveryPlayer((key) => {
-          this._DoSetDownInput(name, key, scheme);
+          this._DoSetDownInput(name, key, scheme, preventAutoSwitch);
         });
       }
     }
@@ -535,56 +599,56 @@ function getInstanceJs() {
         });
       }
     }
-    _DoSetAxisValue(name, value, player, scheme) {
+    _DoSetAxisValue(name, value, player, scheme, preventAutoSwitch) {
       value = this.Clamp(value, -1, 1);
-      this.SetAxisInputState(name, player, scheme, value);
+      this.SetAxisInputState(name, player, scheme, value, preventAutoSwitch);
     }
-    _SetAxisValue(name, value, player, scheme) {
+    _SetAxisValue(name, value, player, scheme, preventAutoSwitch) {
       if (player >= 0) {
-        this._DoSetAxisValue(name, value, player, scheme);
+        this._DoSetAxisValue(name, value, player, scheme, preventAutoSwitch);
       } else {
         this.ForEveryPlayer((key) => {
-          this._DoSetAxisValue(name, value, key, scheme);
+          this._DoSetAxisValue(name, value, key, scheme, preventAutoSwitch);
         });
       }
     }
-    _DoSetJoystickValue(name, x, y, player, scheme) {
+    _DoSetJoystickValue(name, x, y, player, scheme, preventAutoSwitch) {
       x = this.Clamp(x, -1, 1);
       y = this.Clamp(y, -1, 1);
-      this.SetJoystickInputState(name, player, scheme, x, y);
+      this.SetJoystickInputState(name, player, scheme, x, y, preventAutoSwitch);
     }
-    _SetJoystickValue(name, x, y, player, scheme) {
+    _SetJoystickValue(name, x, y, player, scheme, preventAutoSwitch) {
       if (player >= 0) {
-        this._DoSetJoystickValue(name, x, y, player, scheme);
+        this._DoSetJoystickValue(name, x, y, player, scheme, preventAutoSwitch);
       } else {
         this.ForEveryPlayer((key) => {
-          this._DoSetJoystickValue(name, x, y, key, scheme);
+          this._DoSetJoystickValue(name, x, y, key, scheme, preventAutoSwitch);
         });
       }
     }
-    _DoSetJoystickValueX(name, x, player, scheme) {
+    _DoSetJoystickValueX(name, x, player, scheme, preventAutoSwitch) {
       x = this.Clamp(x, -1, 1);
-      this.SetJoystickInputStateX(name, player, scheme, x);
+      this.SetJoystickInputStateX(name, player, scheme, x, preventAutoSwitch);
     }
-    _SetJoystickValueX(name, x, player, scheme) {
+    _SetJoystickValueX(name, x, player, scheme, preventAutoSwitch) {
       if (player >= 0) {
-        this._DoSetJoystickValueX(name, x, player, scheme);
+        this._DoSetJoystickValueX(name, x, player, scheme, preventAutoSwitch);
       } else {
         this.ForEveryPlayer((key) => {
-          this._DoSetJoystickValueX(name, x, key, scheme);
+          this._DoSetJoystickValueX(name, x, key, scheme, preventAutoSwitch);
         });
       }
     }
-    _DoSetJoystickValueY(name, y, player, scheme) {
+    _DoSetJoystickValueY(name, y, player, scheme, preventAutoSwitch) {
       y = this.Clamp(y, -1, 1);
-      this.SetJoystickInputStateY(name, player, scheme, y);
+      this.SetJoystickInputStateY(name, player, scheme, y, preventAutoSwitch);
     }
-    _SetJoystickValueY(name, y, player, scheme) {
+    _SetJoystickValueY(name, y, player, scheme, preventAutoSwitch) {
       if (player >= 0) {
-        this._DoSetJoystickValueY(name, y, player, scheme);
+        this._DoSetJoystickValueY(name, y, player, scheme, preventAutoSwitch);
       } else {
         this.ForEveryPlayer((key) => {
-          this._DoSetJoystickValueY(name, y, key, scheme);
+          this._DoSetJoystickValueY(name, y, key, scheme, preventAutoSwitch);
         });
       }
     }
@@ -637,6 +701,39 @@ function getInstanceJs() {
       }
       return false;
     }
+    _IsAnyDown(player) {
+      if (player >= 0) {
+        return this.IsAnyDigitalInputDown(player);
+      }
+      for (const [key] of this.playerData) {
+        if (this.IsAnyDigitalInputDown(key)) {
+          return true;
+        }
+      }
+      return false;
+    }
+    _IsDownControlScheme(name, player, scheme) {
+      if (player >= 0) {
+        return this.GetDigitalInputState(name, player, scheme);
+      }
+      for (const [key] of this.playerData) {
+        if (this.GetDigitalInputState(name, key, scheme)) {
+          return true;
+        }
+      }
+      return false;
+    }
+    _IsAnyDownControlScheme(player, scheme) {
+      if (player >= 0) {
+        return this.IsAnyDigitalInputDown(player, scheme);
+      }
+      for (const [key] of this.playerData) {
+        if (this.IsAnyDigitalInputDown(key, scheme)) {
+          return true;
+        }
+      }
+      return false;
+    }
     _OnDown(name, player) {
       return (
         this.lastDigitalInput === name &&
@@ -677,12 +774,78 @@ function getInstanceJs() {
       }
       return false;
     }
+    _IsAxisOutsideDeadzoneControlScheme(name, player, scheme) {
+      if (player >= 0) {
+        return this.IsAxisOutsideDeadzone(name, player, scheme);
+      }
+      for (const [key] of this.playerData) {
+        if (this.IsAxisOutsideDeadzone(name, key, scheme)) {
+          return true;
+        }
+      }
+      return false;
+    }
+    _IsAnyAxisOutsideDeadzone(player) {
+      if (player >= 0) {
+        return this.IsAnyAxisOutsideDeadzone(player);
+      }
+      for (const [key] of this.playerData) {
+        if (this.IsAnyAxisOutsideDeadzone(key)) {
+          return true;
+        }
+      }
+      return false;
+    }
+    _IsAnyAxisOutsideDeadzoneControlScheme(player, scheme) {
+      if (player >= 0) {
+        return this.IsAnyAxisOutsideDeadzone(player, scheme);
+      }
+      for (const [key] of this.playerData) {
+        if (this.IsAnyAxisOutsideDeadzone(key, scheme)) {
+          return true;
+        }
+      }
+      return false;
+    }
     _IsJoystickOutsideDeadzone(name, player) {
       if (player >= 0) {
         return this.IsJoystickOutsideDeadzone(name, player);
       }
       for (const [key] of this.playerData) {
         if (this.IsJoystickOutsideDeadzone(name, key)) {
+          return true;
+        }
+      }
+      return false;
+    }
+    _IsJoystickOutsideDeadzoneControlScheme(name, player, scheme) {
+      if (player >= 0) {
+        return this.IsJoystickOutsideDeadzone(name, player, scheme);
+      }
+      for (const [key] of this.playerData) {
+        if (this.IsJoystickOutsideDeadzone(name, key, scheme)) {
+          return true;
+        }
+      }
+      return false;
+    }
+    _IsAnyJoystickOutsideDeadzone(player) {
+      if (player >= 0) {
+        return this.IsAnyJoystickOutsideDeadzone(player);
+      }
+      for (const [key] of this.playerData) {
+        if (this.IsAnyJoystickOutsideDeadzone(key)) {
+          return true;
+        }
+      }
+      return false;
+    }
+    _IsAnyJoystickOutsideDeadzoneControlScheme(player, scheme) {
+      if (player >= 0) {
+        return this.IsAnyJoystickOutsideDeadzone(player, scheme);
+      }
+      for (const [key] of this.playerData) {
+        if (this.IsAnyJoystickOutsideDeadzone(key, scheme)) {
           return true;
         }
       }

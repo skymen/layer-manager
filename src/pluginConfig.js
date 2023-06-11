@@ -114,10 +114,17 @@ module.exports = {
           type: "string",
           value: "",
         },
+        {
+          id: "prevent-auto-switch",
+          name: "Prevent Auto Switch",
+          desc: "Whether to prevent the control scheme from automatically switching",
+          type: "boolean",
+          value: false,
+        },
       ],
       listName: "Set Down Input",
       displayText:
-        "Set down input [i]{0}[/i] for player [i]{1}[/i] with control scheme [i]{2}[/i]",
+        "Set down input [i]{0}[/i] for player [i]{1}[/i] with control scheme [i]{2}[/i] (prevent auto switch: [i]{3}[/i])",
       description: "Set an input to a down state",
     },
     SetUpInput: {
@@ -239,10 +246,17 @@ module.exports = {
           type: "string",
           value: "",
         },
+        {
+          id: "prevent-auto-switch",
+          name: "Prevent Auto Switch",
+          desc: "Whether to prevent the control scheme from automatically switching",
+          type: "boolean",
+          value: false,
+        },
       ],
       listName: "Set Axis Value",
       displayText:
-        "Set axis [i]{0}[/i] to [i]{1}[/i] for player [i]{2}[/i] with control scheme [i]{3}[/i]",
+        "Set axis [i]{0}[/i] to [i]{1}[/i] for player [i]{2}[/i] with control scheme [i]{3}[/i] (prevent auto switch: [i]{4}[/i])",
       description: "Set an axis to a value",
     },
     SetJoystickValue: {
@@ -286,10 +300,17 @@ module.exports = {
           type: "string",
           value: "",
         },
+        {
+          id: "prevent-auto-switch",
+          name: "Prevent Auto Switch",
+          desc: "Whether to prevent the control scheme from automatically switching",
+          type: "boolean",
+          value: false,
+        },
       ],
       listName: "Set Joystick Value",
       displayText:
-        "Set joystick [i]{0}[/i] to [i]{1}[/i], [i]{2}[/i] for player [i]{3}[/i] with control scheme [i]{4}[/i]",
+        "Set joystick [i]{0}[/i] to [i]{1}[/i], [i]{2}[/i] for player [i]{3}[/i] with control scheme [i]{4}[/i] (prevent auto switch: [i]{5}[/i])",
       description: "Set a joystick to a value",
     },
     SetJoystickValueX: {
@@ -326,10 +347,17 @@ module.exports = {
           type: "string",
           value: "",
         },
+        {
+          id: "prevent-auto-switch",
+          name: "Prevent Auto Switch",
+          desc: "Whether to prevent the control scheme from automatically switching",
+          type: "boolean",
+          value: false,
+        },
       ],
       listName: "Set Joystick Value X",
       displayText:
-        "Set joystick [i]{0}[/i] X to [i]{1}[/i] for player [i]{2}[/i] with control scheme [i]{3}[/i]",
+        "Set joystick [i]{0}[/i] X to [i]{1}[/i] for player [i]{2}[/i] with control scheme [i]{3}[/i] (prevent auto switch: [i]{4}[/i])",
       description: "Set a joystick X value",
     },
     SetJoystickValueY: {
@@ -366,10 +394,17 @@ module.exports = {
           type: "string",
           value: "",
         },
+        {
+          id: "prevent-auto-switch",
+          name: "Prevent Auto Switch",
+          desc: "Whether to prevent the control scheme from automatically switching",
+          type: "boolean",
+          value: false,
+        },
       ],
       listName: "Set Joystick Value Y",
       displayText:
-        "Set joystick [i]{0}[/i] Y to [i]{1}[/i] for player [i]{2}[/i] with control scheme [i]{3}[/i]",
+        "Set joystick [i]{0}[/i] Y to [i]{1}[/i] for player [i]{2}[/i] with control scheme [i]{3}[/i] (prevent auto switch: [i]{4}[/i])",
       description: "Set a joystick Y value",
     },
     SetControlScheme: {
@@ -562,6 +597,83 @@ module.exports = {
       displayText: "Is [i]{0}[/i] down for player [i]{1}[/i]",
       description: "Test if an input is down",
     },
+    IsAnyDown: {
+      category: "digital",
+      forward: "_IsAnyDown",
+      autoScriptInterface: true,
+      highlight: false,
+      params: [
+        {
+          id: "player",
+          name: "Player",
+          desc: "The player ID, -1 for all players",
+          type: "number",
+          value: 0,
+        },
+      ],
+      listName: "Is Any Down",
+      displayText: "Is any input down for player [i]{0}[/i]",
+      description: "Test if any input is down",
+    },
+    IsDownControlScheme: {
+      category: "digital",
+      forward: "_IsDownControlScheme",
+      autoScriptInterface: true,
+      highlight: false,
+      params: [
+        {
+          id: "name",
+          name: "Name",
+          desc: "The name of the input",
+          type: "string",
+          value: "",
+        },
+        {
+          id: "player",
+          name: "Player",
+          desc: "The player ID, -1 for all players",
+          type: "number",
+          value: 0,
+        },
+        {
+          id: "controlScheme",
+          name: "Control Scheme",
+          desc: "The control scheme to test",
+          type: "string",
+          value: "",
+        },
+      ],
+      listName: "Is Down For Control Scheme",
+      displayText:
+        "Is [i]{0}[/i] down for player [i]{1}[/i] with control scheme [i]{2}[/i]",
+      description: "Test if an input is down for a specific control scheme",
+    },
+    IsAnyDownControlScheme: {
+      category: "digital",
+      forward: "_IsAnyDownControlScheme",
+      autoScriptInterface: true,
+      highlight: false,
+      params: [
+        {
+          id: "player",
+          name: "Player",
+          desc: "The player ID, -1 for all players",
+          type: "number",
+          value: 0,
+        },
+        {
+          id: "controlScheme",
+          name: "Control Scheme",
+          desc: "The control scheme to test",
+          type: "string",
+          value: "",
+        },
+      ],
+      listName: "Is Any Down For Control Scheme",
+      displayText:
+        "Is any input down for player [i]{0}[/i] with control scheme [i]{1}[/i]",
+      description: "Test if any input is down for a specific control scheme",
+    },
     OnDown: {
       category: "digital",
       forward: "_OnDown",
@@ -702,6 +814,85 @@ module.exports = {
       displayText: "Is axis [i]{0}[/i] outside deadzone for player [i]{1}[/i]",
       description: "Test if an axis is outside its deadzone",
     },
+    IsAxisOutsideDeadzoneControlScheme: {
+      category: "analog",
+      forward: "_IsAxisOutsideDeadzoneControlScheme",
+      autoScriptInterface: true,
+      highlight: false,
+      params: [
+        {
+          id: "name",
+          name: "Name",
+          desc: "The name of the axis",
+          type: "string",
+          value: "",
+        },
+        {
+          id: "player",
+          name: "Player",
+          desc: "The player ID, -1 for all players",
+          type: "number",
+          value: 0,
+        },
+        {
+          id: "controlScheme",
+          name: "Control Scheme",
+          desc: "The control scheme to test",
+          type: "string",
+          value: "",
+        },
+      ],
+      listName: "Is Axis Outside Deadzone For Control Scheme",
+      displayText:
+        "Is axis [i]{0}[/i] outside deadzone for player [i]{1}[/i] and control scheme [i]{2}[/i]",
+      description:
+        "Test if an axis is outside its deadzone for a control scheme",
+    },
+    IsAnyAxisOutsideDeadzone: {
+      category: "analog",
+      forward: "_IsAnyAxisOutsideDeadzone",
+      autoScriptInterface: true,
+      highlight: false,
+      params: [
+        {
+          id: "player",
+          name: "Player",
+          desc: "The player ID, -1 for all players",
+          type: "number",
+          value: 0,
+        },
+      ],
+      listName: "Is Any Axis Outside Deadzone",
+      displayText: "Is any axis outside deadzone for player [i]{0}[/i]",
+      description: "Test if any axis is outside its deadzone",
+    },
+    IsAnyAxisOutsideDeadzoneControlScheme: {
+      category: "analog",
+      forward: "_IsAnyAxisOutsideDeadzoneControlScheme",
+      autoScriptInterface: true,
+      highlight: false,
+      params: [
+        {
+          id: "player",
+          name: "Player",
+          desc: "The player ID, -1 for all players",
+          type: "number",
+          value: 0,
+        },
+        {
+          id: "controlScheme",
+          name: "Control Scheme",
+          desc: "The control scheme to test",
+          type: "string",
+          value: "",
+        },
+      ],
+      listName: "Is Any Axis Outside Deadzone For Control Scheme",
+      displayText:
+        "Is any axis outside deadzone for player [i]{0}[/i] and control scheme [i]{1}[/i]",
+      description:
+        "Test if any axis is outside its deadzone for a control scheme",
+    },
     IsJoystickOutsideDeadzone: {
       category: "analog",
       forward: "_IsJoystickOutsideDeadzone",
@@ -727,6 +918,85 @@ module.exports = {
       displayText:
         "Is joystick [i]{0}[/i] outside deadzone for player [i]{1}[/i]",
       description: "Test if a joystick is outside its deadzone",
+    },
+    IsJoystickOutsideDeadzoneControlScheme: {
+      category: "analog",
+      forward: "_IsJoystickOutsideDeadzoneControlScheme",
+      autoScriptInterface: true,
+      highlight: false,
+      params: [
+        {
+          id: "name",
+          name: "Name",
+          desc: "The name of the joystick",
+          type: "string",
+          value: "",
+        },
+        {
+          id: "player",
+          name: "Player",
+          desc: "The player ID, -1 for all players",
+          type: "number",
+          value: 0,
+        },
+        {
+          id: "controlScheme",
+          name: "Control Scheme",
+          desc: "The control scheme to test",
+          type: "string",
+          value: "",
+        },
+      ],
+      listName: "Is Joystick Outside Deadzone For Control Scheme",
+      displayText:
+        "Is joystick [i]{0}[/i] outside deadzone for player [i]{1}[/i] and control scheme [i]{2}[/i]",
+      description:
+        "Test if a joystick is outside its deadzone for a control scheme",
+    },
+    IsAnyJoystickOutsideDeadzone: {
+      category: "analog",
+      forward: "_IsAnyJoystickOutsideDeadzone",
+      autoScriptInterface: true,
+      highlight: false,
+      params: [
+        {
+          id: "player",
+          name: "Player",
+          desc: "The player ID, -1 for all players",
+          type: "number",
+          value: 0,
+        },
+      ],
+      listName: "Is Any Joystick Outside Deadzone",
+      displayText: "Is any joystick outside deadzone for player [i]{0}[/i]",
+      description: "Test if any joystick is outside its deadzone",
+    },
+    IsAnyJoystickOutsideDeadzoneControlScheme: {
+      category: "analog",
+      forward: "_IsAnyJoystickOutsideDeadzoneControlScheme",
+      autoScriptInterface: true,
+      highlight: false,
+      params: [
+        {
+          id: "player",
+          name: "Player",
+          desc: "The player ID, -1 for all players",
+          type: "number",
+          value: 0,
+        },
+        {
+          id: "controlScheme",
+          name: "Control Scheme",
+          desc: "The control scheme to test",
+          type: "string",
+          value: "",
+        },
+      ],
+      listName: "Is Any Joystick Outside Deadzone For Control Scheme",
+      displayText:
+        "Is any joystick outside deadzone for player [i]{0}[/i] and control scheme [i]{1}[/i]",
+      description:
+        "Test if any joystick is outside its deadzone for a control scheme",
     },
   },
   Exps: {

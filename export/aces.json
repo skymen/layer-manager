@@ -19,6 +19,57 @@
         ]
       },
       {
+        "id": "IsAnyDown",
+        "scriptName": "IsAnyDown",
+        "highlight": false,
+        "params": [
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "IsDownControlScheme",
+        "scriptName": "IsDownControlScheme",
+        "highlight": false,
+        "params": [
+          {
+            "id": "name",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          },
+          {
+            "id": "controlScheme",
+            "type": "string",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "id": "IsAnyDownControlScheme",
+        "scriptName": "IsAnyDownControlScheme",
+        "highlight": false,
+        "params": [
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          },
+          {
+            "id": "controlScheme",
+            "type": "string",
+            "value": ""
+          }
+        ]
+      },
+      {
         "id": "OnDown",
         "scriptName": "OnDown",
         "highlight": false,
@@ -101,6 +152,11 @@
             "id": "control-scheme",
             "type": "string",
             "value": ""
+          },
+          {
+            "id": "prevent-auto-switch",
+            "type": "boolean",
+            "value": false
           }
         ]
       },
@@ -200,6 +256,57 @@
         ]
       },
       {
+        "id": "IsAxisOutsideDeadzoneControlScheme",
+        "scriptName": "IsAxisOutsideDeadzoneControlScheme",
+        "highlight": false,
+        "params": [
+          {
+            "id": "name",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          },
+          {
+            "id": "controlScheme",
+            "type": "string",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "id": "IsAnyAxisOutsideDeadzone",
+        "scriptName": "IsAnyAxisOutsideDeadzone",
+        "highlight": false,
+        "params": [
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "IsAnyAxisOutsideDeadzoneControlScheme",
+        "scriptName": "IsAnyAxisOutsideDeadzoneControlScheme",
+        "highlight": false,
+        "params": [
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          },
+          {
+            "id": "controlScheme",
+            "type": "string",
+            "value": ""
+          }
+        ]
+      },
+      {
         "id": "IsJoystickOutsideDeadzone",
         "scriptName": "IsJoystickOutsideDeadzone",
         "highlight": true,
@@ -213,6 +320,57 @@
             "id": "player",
             "type": "number",
             "value": 0
+          }
+        ]
+      },
+      {
+        "id": "IsJoystickOutsideDeadzoneControlScheme",
+        "scriptName": "IsJoystickOutsideDeadzoneControlScheme",
+        "highlight": false,
+        "params": [
+          {
+            "id": "name",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          },
+          {
+            "id": "controlScheme",
+            "type": "string",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "id": "IsAnyJoystickOutsideDeadzone",
+        "scriptName": "IsAnyJoystickOutsideDeadzone",
+        "highlight": false,
+        "params": [
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "IsAnyJoystickOutsideDeadzoneControlScheme",
+        "scriptName": "IsAnyJoystickOutsideDeadzoneControlScheme",
+        "highlight": false,
+        "params": [
+          {
+            "id": "player",
+            "type": "number",
+            "value": 0
+          },
+          {
+            "id": "controlScheme",
+            "type": "string",
+            "value": ""
           }
         ]
       }
@@ -242,6 +400,11 @@
             "id": "control-scheme",
             "type": "string",
             "value": ""
+          },
+          {
+            "id": "prevent-auto-switch",
+            "type": "boolean",
+            "value": false
           }
         ]
       },
@@ -274,6 +437,11 @@
             "id": "control-scheme",
             "type": "string",
             "value": ""
+          },
+          {
+            "id": "prevent-auto-switch",
+            "type": "boolean",
+            "value": false
           }
         ]
       },
@@ -301,6 +469,11 @@
             "id": "control-scheme",
             "type": "string",
             "value": ""
+          },
+          {
+            "id": "prevent-auto-switch",
+            "type": "boolean",
+            "value": false
           }
         ]
       },
@@ -328,6 +501,11 @@
             "id": "control-scheme",
             "type": "string",
             "value": ""
+          },
+          {
+            "id": "prevent-auto-switch",
+            "type": "boolean",
+            "value": false
           }
         ]
       },

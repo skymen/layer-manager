@@ -36,7 +36,7 @@
         "actions": {
           "SetDownInput": {
             "list-name": "Set Down Input",
-            "display-text": "Set down input [i]{0}[/i] for player [i]{1}[/i] with control scheme [i]{2}[/i]",
+            "display-text": "Set down input [i]{0}[/i] for player [i]{1}[/i] with control scheme [i]{2}[/i] (prevent auto switch: [i]{3}[/i])",
             "description": "Set an input to a down state",
             "params": {
               "name": {
@@ -50,6 +50,10 @@
               "control-scheme": {
                 "name": "Control Scheme",
                 "desc": "The control scheme ID"
+              },
+              "prevent-auto-switch": {
+                "name": "Prevent Auto Switch",
+                "desc": "Whether to prevent the control scheme from automatically switching"
               }
             }
           },
@@ -104,7 +108,7 @@
           },
           "SetAxisValue": {
             "list-name": "Set Axis Value",
-            "display-text": "Set axis [i]{0}[/i] to [i]{1}[/i] for player [i]{2}[/i] with control scheme [i]{3}[/i]",
+            "display-text": "Set axis [i]{0}[/i] to [i]{1}[/i] for player [i]{2}[/i] with control scheme [i]{3}[/i] (prevent auto switch: [i]{4}[/i])",
             "description": "Set an axis to a value",
             "params": {
               "name": {
@@ -122,12 +126,16 @@
               "control-scheme": {
                 "name": "Control Scheme",
                 "desc": "The control scheme ID"
+              },
+              "prevent-auto-switch": {
+                "name": "Prevent Auto Switch",
+                "desc": "Whether to prevent the control scheme from automatically switching"
               }
             }
           },
           "SetJoystickValue": {
             "list-name": "Set Joystick Value",
-            "display-text": "Set joystick [i]{0}[/i] to [i]{1}[/i], [i]{2}[/i] for player [i]{3}[/i] with control scheme [i]{4}[/i]",
+            "display-text": "Set joystick [i]{0}[/i] to [i]{1}[/i], [i]{2}[/i] for player [i]{3}[/i] with control scheme [i]{4}[/i] (prevent auto switch: [i]{5}[/i])",
             "description": "Set a joystick to a value",
             "params": {
               "name": {
@@ -149,12 +157,16 @@
               "control-scheme": {
                 "name": "Control Scheme",
                 "desc": "The control scheme ID"
+              },
+              "prevent-auto-switch": {
+                "name": "Prevent Auto Switch",
+                "desc": "Whether to prevent the control scheme from automatically switching"
               }
             }
           },
           "SetJoystickValueX": {
             "list-name": "Set Joystick Value X",
-            "display-text": "Set joystick [i]{0}[/i] X to [i]{1}[/i] for player [i]{2}[/i] with control scheme [i]{3}[/i]",
+            "display-text": "Set joystick [i]{0}[/i] X to [i]{1}[/i] for player [i]{2}[/i] with control scheme [i]{3}[/i] (prevent auto switch: [i]{4}[/i])",
             "description": "Set a joystick X value",
             "params": {
               "name": {
@@ -172,12 +184,16 @@
               "control-scheme": {
                 "name": "Control Scheme",
                 "desc": "The control scheme ID"
+              },
+              "prevent-auto-switch": {
+                "name": "Prevent Auto Switch",
+                "desc": "Whether to prevent the control scheme from automatically switching"
               }
             }
           },
           "SetJoystickValueY": {
             "list-name": "Set Joystick Value Y",
-            "display-text": "Set joystick [i]{0}[/i] Y to [i]{1}[/i] for player [i]{2}[/i] with control scheme [i]{3}[/i]",
+            "display-text": "Set joystick [i]{0}[/i] Y to [i]{1}[/i] for player [i]{2}[/i] with control scheme [i]{3}[/i] (prevent auto switch: [i]{4}[/i])",
             "description": "Set a joystick Y value",
             "params": {
               "name": {
@@ -195,6 +211,10 @@
               "control-scheme": {
                 "name": "Control Scheme",
                 "desc": "The control scheme ID"
+              },
+              "prevent-auto-switch": {
+                "name": "Prevent Auto Switch",
+                "desc": "Whether to prevent the control scheme from automatically switching"
               }
             }
           },
@@ -312,6 +332,51 @@
               }
             }
           },
+          "IsAnyDown": {
+            "list-name": "Is Any Down",
+            "display-text": "Is any input down for player [i]{0}[/i]",
+            "description": "Test if any input is down",
+            "params": {
+              "player": {
+                "name": "Player",
+                "desc": "The player ID, -1 for all players"
+              }
+            }
+          },
+          "IsDownControlScheme": {
+            "list-name": "Is Down For Control Scheme",
+            "display-text": "Is [i]{0}[/i] down for player [i]{1}[/i] with control scheme [i]{2}[/i]",
+            "description": "Test if an input is down for a specific control scheme",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the input"
+              },
+              "player": {
+                "name": "Player",
+                "desc": "The player ID, -1 for all players"
+              },
+              "controlScheme": {
+                "name": "Control Scheme",
+                "desc": "The control scheme to test"
+              }
+            }
+          },
+          "IsAnyDownControlScheme": {
+            "list-name": "Is Any Down For Control Scheme",
+            "display-text": "Is any input down for player [i]{0}[/i] with control scheme [i]{1}[/i]",
+            "description": "Test if any input is down for a specific control scheme",
+            "params": {
+              "player": {
+                "name": "Player",
+                "desc": "The player ID, -1 for all players"
+              },
+              "controlScheme": {
+                "name": "Control Scheme",
+                "desc": "The control scheme to test"
+              }
+            }
+          },
           "OnDown": {
             "list-name": "On Down",
             "display-text": "On [i]{0}[/i] down for player [i]{1}[/i]",
@@ -394,6 +459,51 @@
               }
             }
           },
+          "IsAxisOutsideDeadzoneControlScheme": {
+            "list-name": "Is Axis Outside Deadzone For Control Scheme",
+            "display-text": "Is axis [i]{0}[/i] outside deadzone for player [i]{1}[/i] and control scheme [i]{2}[/i]",
+            "description": "Test if an axis is outside its deadzone for a control scheme",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the axis"
+              },
+              "player": {
+                "name": "Player",
+                "desc": "The player ID, -1 for all players"
+              },
+              "controlScheme": {
+                "name": "Control Scheme",
+                "desc": "The control scheme to test"
+              }
+            }
+          },
+          "IsAnyAxisOutsideDeadzone": {
+            "list-name": "Is Any Axis Outside Deadzone",
+            "display-text": "Is any axis outside deadzone for player [i]{0}[/i]",
+            "description": "Test if any axis is outside its deadzone",
+            "params": {
+              "player": {
+                "name": "Player",
+                "desc": "The player ID, -1 for all players"
+              }
+            }
+          },
+          "IsAnyAxisOutsideDeadzoneControlScheme": {
+            "list-name": "Is Any Axis Outside Deadzone For Control Scheme",
+            "display-text": "Is any axis outside deadzone for player [i]{0}[/i] and control scheme [i]{1}[/i]",
+            "description": "Test if any axis is outside its deadzone for a control scheme",
+            "params": {
+              "player": {
+                "name": "Player",
+                "desc": "The player ID, -1 for all players"
+              },
+              "controlScheme": {
+                "name": "Control Scheme",
+                "desc": "The control scheme to test"
+              }
+            }
+          },
           "IsJoystickOutsideDeadzone": {
             "list-name": "Is Joystick Outside Deadzone",
             "display-text": "Is joystick [i]{0}[/i] outside deadzone for player [i]{1}[/i]",
@@ -406,6 +516,51 @@
               "player": {
                 "name": "Player",
                 "desc": "The player ID, -1 for all players"
+              }
+            }
+          },
+          "IsJoystickOutsideDeadzoneControlScheme": {
+            "list-name": "Is Joystick Outside Deadzone For Control Scheme",
+            "display-text": "Is joystick [i]{0}[/i] outside deadzone for player [i]{1}[/i] and control scheme [i]{2}[/i]",
+            "description": "Test if a joystick is outside its deadzone for a control scheme",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the joystick"
+              },
+              "player": {
+                "name": "Player",
+                "desc": "The player ID, -1 for all players"
+              },
+              "controlScheme": {
+                "name": "Control Scheme",
+                "desc": "The control scheme to test"
+              }
+            }
+          },
+          "IsAnyJoystickOutsideDeadzone": {
+            "list-name": "Is Any Joystick Outside Deadzone",
+            "display-text": "Is any joystick outside deadzone for player [i]{0}[/i]",
+            "description": "Test if any joystick is outside its deadzone",
+            "params": {
+              "player": {
+                "name": "Player",
+                "desc": "The player ID, -1 for all players"
+              }
+            }
+          },
+          "IsAnyJoystickOutsideDeadzoneControlScheme": {
+            "list-name": "Is Any Joystick Outside Deadzone For Control Scheme",
+            "display-text": "Is any joystick outside deadzone for player [i]{0}[/i] and control scheme [i]{1}[/i]",
+            "description": "Test if any joystick is outside its deadzone for a control scheme",
+            "params": {
+              "player": {
+                "name": "Player",
+                "desc": "The player ID, -1 for all players"
+              },
+              "controlScheme": {
+                "name": "Control Scheme",
+                "desc": "The control scheme to test"
               }
             }
           }
