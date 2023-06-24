@@ -1,9 +1,9 @@
 const SDK = self.SDK;
 
 const PLUGIN_INFO = {
-  "id": "skymen_better_input_manager",
+  "id": "skymen_layer_manager",
   "version": "1.0.0.3",
-  "category": "input",
+  "category": "general",
   "author": "skymen",
   "type": "object",
   "addonType": "plugin",
@@ -32,48 +32,7 @@ const PLUGIN_INFO = {
       "ZOrder": false
     }
   },
-  "properties": [
-    {
-      "type": "float",
-      "id": "default-axis-deadzone",
-      "value": 0.2,
-      "options": {
-        "interpolatable": false
-      },
-      "name": "Default Axis Deadzone",
-      "desc": "A value between 0 and 1 that determines the default deadzone for all axes"
-    },
-    {
-      "type": "float",
-      "id": "default-joystick-deadzone",
-      "value": 0.2,
-      "options": {
-        "interpolatable": false
-      },
-      "name": "Default Joystick Deadzone",
-      "desc": "A value between 0 and 1 that determines the default deadzone for all joysticks"
-    },
-    {
-      "type": "text",
-      "id": "default-control-scheme",
-      "value": "",
-      "options": {
-        "interpolatable": false
-      },
-      "name": "Default Control Scheme",
-      "desc": "The default control scheme to use"
-    },
-    {
-      "type": "check",
-      "id": "auto-switch-control-scheme",
-      "value": true,
-      "options": {
-        "interpolatable": false
-      },
-      "name": "Auto Switch Control Scheme",
-      "desc": "Whether to automatically switch control schemes when the user inputs a new control scheme"
-    }
-  ]
+  "properties": []
 }
 
 let app = null;

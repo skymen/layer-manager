@@ -1,724 +1,400 @@
 {
   "languageTag": "en-US",
-  "fileDescription": "Strings for skymen_better_input_manager.",
+  "fileDescription": "Strings for skymen_layer_manager.",
   "text": {
     "plugins": {
-      "skymen_better_input_manager": {
-        "name": "Better Input Manager",
-        "description": "An improved input manager",
+      "skymen_layer_manager": {
+        "name": "Layer Manager",
+        "description": "Create, Destroy and Reorder Layers at runtime",
         "help-url": "https://www.construct.net",
         "aceCategories": {
-          "digital": "Digital",
-          "analog": "Analog",
-          "simulate": "Simulate",
-          "control": "Control Scheme",
-          "general": "General",
-          "wire": "Wire"
+          "general": "General"
         },
-        "properties": {
-          "default-axis-deadzone": {
-            "name": "Default Axis Deadzone",
-            "desc": "A value between 0 and 1 that determines the default deadzone for all axes"
-          },
-          "default-joystick-deadzone": {
-            "name": "Default Joystick Deadzone",
-            "desc": "A value between 0 and 1 that determines the default deadzone for all joysticks"
-          },
-          "default-control-scheme": {
-            "name": "Default Control Scheme",
-            "desc": "The default control scheme to use"
-          },
-          "auto-switch-control-scheme": {
-            "name": "Auto Switch Control Scheme",
-            "desc": "Whether to automatically switch control schemes when the user inputs a new control scheme"
-          }
-        },
+        "properties": {},
         "actions": {
-          "SetDownInput": {
-            "list-name": "Set Down Input",
-            "display-text": "Set down input [i]{0}[/i] for player [i]{1}[/i] with control scheme [i]{2}[/i] (prevent auto switch: [i]{3}[/i])",
-            "description": "Set an input to a down state",
+          "CreateLayer": {
+            "list-name": "Create Layer",
+            "display-text": "Create layer [i]{0}[/i] ([i]{1}[/i], [i]{2}[/i], [i]{3}[/i], [i]{4}[/i])",
+            "description": "Create a layer",
             "params": {
               "name": {
                 "name": "Name",
-                "desc": "The name of the input"
+                "desc": "The name of the layer"
               },
-              "player": {
-                "name": "Player",
-                "desc": "The player ID, -1 for all players"
+              "useRenderCells": {
+                "name": "Use Render Cells",
+                "desc": "Whether to use render cells"
               },
-              "control-scheme": {
-                "name": "Control Scheme",
-                "desc": "The control scheme ID"
+              "renderAs3D": {
+                "name": "Render As 3D",
+                "desc": "Whether to render as 3D"
               },
-              "prevent-auto-switch": {
-                "name": "Prevent Auto Switch",
-                "desc": "Whether to prevent the control scheme from automatically switching"
+              "useCameraDistanceDrawOrder": {
+                "name": "Use Camera Distance Draw Order",
+                "desc": "Whether to use camera distance draw order"
+              },
+              "temporary": {
+                "name": "Temporary",
+                "desc": "Whether the layer is temporary (will be destroyed when the layout ends)"
               }
             }
           },
-          "SetUpInput": {
-            "list-name": "Set Up Input",
-            "display-text": "Set up input [i]{0}[/i] for player [i]{1}[/i] with control scheme [i]{2}[/i]",
-            "description": "Set an input to an up state",
+          "CreateLayerOnLayout": {
+            "list-name": "Create Layer On Layout",
+            "display-text": "Create layer [i]{1}[/i] on layout [i]{0}[/i] ([i]{2}[/i], [i]{3}[/i], [i]{4}[/i])",
+            "description": "Create a layer on a layout",
+            "params": {
+              "layout": {
+                "name": "Layout",
+                "desc": "The layout to create the layer on"
+              },
+              "name": {
+                "name": "Name",
+                "desc": "The name of the layer"
+              },
+              "useRenderCells": {
+                "name": "Use Render Cells",
+                "desc": "Whether to use render cells"
+              },
+              "renderAs3D": {
+                "name": "Render As 3D",
+                "desc": "Whether to render as 3D"
+              },
+              "useCameraDistanceDrawOrder": {
+                "name": "Use Camera Distance Draw Order",
+                "desc": "Whether to use camera distance draw order"
+              }
+            }
+          },
+          "DestroyLayer": {
+            "list-name": "Destroy Layer",
+            "display-text": "Destroy layer [i]{0}[/i]",
+            "description": "Destroy a layer",
             "params": {
               "name": {
                 "name": "Name",
-                "desc": "The name of the input"
-              },
-              "player": {
-                "name": "Player",
-                "desc": "The player ID, -1 for all players"
-              },
-              "control-scheme": {
-                "name": "Control Scheme",
-                "desc": "The control scheme ID"
+                "desc": "The name of the layer"
               }
             }
           },
-          "SimulateDownInput": {
-            "list-name": "Simulate Down Input",
-            "display-text": "Simulate down input [i]{0}[/i] for player [i]{1}[/i]",
-            "description": "This only triggers the down event, it does not set the input to a down state",
+          "DestroyLayerOnLayout": {
+            "list-name": "Destroy Layer On Layout",
+            "display-text": "Destroy layer [i]{1}[/i] on layout [i]{0}[/i]",
+            "description": "Destroy a layer on a layout",
+            "params": {
+              "layout": {
+                "name": "Layout",
+                "desc": "The layout to destroy the layer on"
+              },
+              "name": {
+                "name": "Name",
+                "desc": "The name of the layer"
+              }
+            }
+          },
+          "MoveLayerToLayer": {
+            "list-name": "Move Layer To Layer",
+            "display-text": "Move layer [i]{0}[/i] to layer [i]{1}[/i] (before: [i]{2}[/i])",
+            "description": "Move a layer to another layer",
             "params": {
               "name": {
                 "name": "Name",
-                "desc": "The name of the input"
+                "desc": "The name of the layer"
               },
-              "player": {
-                "name": "Player",
-                "desc": "The player ID, -1 for all players"
+              "target": {
+                "name": "Target",
+                "desc": "The target layer"
+              },
+              "before": {
+                "name": "Before",
+                "desc": "Whether to move the layer before the target layer"
               }
             }
           },
-          "SimulateUpInput": {
-            "list-name": "Simulate Up Input",
-            "display-text": "Simulate up input [i]{0}[/i] for player [i]{1}[/i]",
-            "description": "This only triggers the up event, it does not set the input to an up state",
+          "SetLayerAsChildOfLayer": {
+            "list-name": "Set Layer As Child Of Layer",
+            "display-text": "Set layer [i]{0}[/i] as child of layer [i]{1}[/i] at index [i]{2}[/i]",
+            "description": "Set a layer as a child of another layer at an index",
             "params": {
               "name": {
                 "name": "Name",
-                "desc": "The name of the input"
+                "desc": "The name of the layer"
               },
-              "player": {
-                "name": "Player",
-                "desc": "The player ID, -1 for all players"
+              "target": {
+                "name": "Target",
+                "desc": "The target layer"
+              },
+              "index": {
+                "name": "Index",
+                "desc": "The index to set the layer as a child of the target layer"
               }
             }
           },
-          "SetAxisValue": {
-            "list-name": "Set Axis Value",
-            "display-text": "Set axis [i]{0}[/i] to [i]{1}[/i] for player [i]{2}[/i] with control scheme [i]{3}[/i] (prevent auto switch: [i]{4}[/i])",
-            "description": "Set an axis to a value",
+          "SetLayerAsRoot": {
+            "list-name": "Set Layer As Root",
+            "display-text": "Set layer [i]{0}[/i] as root at index [i]{1}[/i]",
+            "description": "Set a layer as a root layer at an index",
             "params": {
               "name": {
                 "name": "Name",
-                "desc": "The name of the input"
+                "desc": "The name of the layer"
               },
-              "value": {
-                "name": "Value",
-                "desc": "The value of the axis from -1 to 1"
-              },
-              "player": {
-                "name": "Player",
-                "desc": "The player ID, -1 for all players"
-              },
-              "control-scheme": {
-                "name": "Control Scheme",
-                "desc": "The control scheme ID"
-              },
-              "prevent-auto-switch": {
-                "name": "Prevent Auto Switch",
-                "desc": "Whether to prevent the control scheme from automatically switching"
+              "index": {
+                "name": "Index",
+                "desc": "The index to set the layer as a root layer"
               }
             }
           },
-          "SetJoystickValue": {
-            "list-name": "Set Joystick Value",
-            "display-text": "Set joystick [i]{0}[/i] to [i]{1}[/i], [i]{2}[/i] for player [i]{3}[/i] with control scheme [i]{4}[/i] (prevent auto switch: [i]{5}[/i])",
-            "description": "Set a joystick to a value",
+          "SetLayerAsRootOnLayout": {
+            "list-name": "Set Layer As Root On Layout",
+            "display-text": "Set layer [i]{1}[/i] as root on layout [i]{0}[/i] at index [i]{2}[/i]",
+            "description": "Set a layer as a root layer on a layout at an index",
             "params": {
+              "layout": {
+                "name": "Layout",
+                "desc": "The layout to set the layer as a root layer on"
+              },
               "name": {
                 "name": "Name",
-                "desc": "The name of the input"
+                "desc": "The name of the layer"
               },
-              "x": {
-                "name": "X",
-                "desc": "The X value of the joystick from -1 to 1"
-              },
-              "y": {
-                "name": "Y",
-                "desc": "The Y value of the joystick from -1 to 1"
-              },
-              "player": {
-                "name": "Player",
-                "desc": "The player ID, -1 for all players"
-              },
-              "control-scheme": {
-                "name": "Control Scheme",
-                "desc": "The control scheme ID"
-              },
-              "prevent-auto-switch": {
-                "name": "Prevent Auto Switch",
-                "desc": "Whether to prevent the control scheme from automatically switching"
+              "index": {
+                "name": "Index",
+                "desc": "The index to set the layer as a root layer"
               }
             }
           },
-          "SetJoystickValueX": {
-            "list-name": "Set Joystick Value X",
-            "display-text": "Set joystick [i]{0}[/i] X to [i]{1}[/i] for player [i]{2}[/i] with control scheme [i]{3}[/i] (prevent auto switch: [i]{4}[/i])",
-            "description": "Set a joystick X value",
+          "SetLayerAsChildOfLayerOnLayout": {
+            "list-name": "Set Layer As Child Of Layer On Layout",
+            "display-text": "Set layer [i]{1}[/i] as child of layer [i]{2}[/i] on layout [i]{0}[/i] at index [i]{3}[/i]",
+            "description": "Set a layer as a child of another layer on a layout at an index",
             "params": {
+              "layout": {
+                "name": "Layout",
+                "desc": "The layout to set the layer as a child of another layer on"
+              },
               "name": {
                 "name": "Name",
-                "desc": "The name of the input"
+                "desc": "The name of the layer"
               },
-              "value": {
-                "name": "Value",
-                "desc": "The value of the joystick from -1 to 1"
+              "target": {
+                "name": "Target",
+                "desc": "The target layer"
               },
-              "player": {
-                "name": "Player",
-                "desc": "The player ID, -1 for all players"
-              },
-              "control-scheme": {
-                "name": "Control Scheme",
-                "desc": "The control scheme ID"
-              },
-              "prevent-auto-switch": {
-                "name": "Prevent Auto Switch",
-                "desc": "Whether to prevent the control scheme from automatically switching"
-              }
-            }
-          },
-          "SetJoystickValueY": {
-            "list-name": "Set Joystick Value Y",
-            "display-text": "Set joystick [i]{0}[/i] Y to [i]{1}[/i] for player [i]{2}[/i] with control scheme [i]{3}[/i] (prevent auto switch: [i]{4}[/i])",
-            "description": "Set a joystick Y value",
-            "params": {
-              "name": {
-                "name": "Name",
-                "desc": "The name of the input"
-              },
-              "value": {
-                "name": "Value",
-                "desc": "The value of the joystick from -1 to 1"
-              },
-              "player": {
-                "name": "Player",
-                "desc": "The player ID, -1 for all players"
-              },
-              "control-scheme": {
-                "name": "Control Scheme",
-                "desc": "The control scheme ID"
-              },
-              "prevent-auto-switch": {
-                "name": "Prevent Auto Switch",
-                "desc": "Whether to prevent the control scheme from automatically switching"
-              }
-            }
-          },
-          "SetControlScheme": {
-            "list-name": "Set Control Scheme",
-            "display-text": "Set control scheme [i]{0}[/i] for player [i]{1}[/i]",
-            "description": "Switch to a control scheme",
-            "params": {
-              "control-scheme": {
-                "name": "Control Scheme",
-                "desc": "The control scheme ID"
-              },
-              "player": {
-                "name": "Player",
-                "desc": "The player ID, -1 for all players"
-              }
-            }
-          },
-          "SetAutoSwitchControlScheme": {
-            "list-name": "Set Auto Switch Control Scheme",
-            "display-text": "Set auto switch to [i]{1}[/i] for player [i]{0}[/i]",
-            "description": "Enable or disable auto switch",
-            "params": {
-              "player": {
-                "name": "Player",
-                "desc": "The player ID, -1 for all players"
-              },
-              "enabled": {
-                "name": "Enabled",
-                "desc": "Whether auto switch is enabled"
-              }
-            }
-          },
-          "SetDefaultAxisDeadzone": {
-            "list-name": "Set Default Axis Deadzone",
-            "display-text": "Set default axis deadzone to [i]{0}[/i]",
-            "description": "Set the default deadzone for all axes that don't have a custom deadzone set",
-            "params": {
-              "deadzone": {
-                "name": "Deadzone",
-                "desc": "The default deadzone for all axes"
-              }
-            }
-          },
-          "SetDefaultJoystickDeadzone": {
-            "list-name": "Set Default Joystick Deadzone",
-            "display-text": "Set default joystick deadzone to [i]{0}[/i]",
-            "description": "Set the default deadzone for all joysticks that don't have a custom deadzone set",
-            "params": {
-              "deadzone": {
-                "name": "Deadzone",
-                "desc": "The default deadzone for all joysticks"
-              }
-            }
-          },
-          "SetAxisDeadzone": {
-            "list-name": "Set Axis Deadzone",
-            "display-text": "Set axis [i]{0}[/i] deadzone to [i]{1}[/i]",
-            "description": "Set the deadzone for an axis",
-            "params": {
-              "name": {
-                "name": "Name",
-                "desc": "The name of the input"
-              },
-              "deadzone": {
-                "name": "Deadzone",
-                "desc": "The deadzone for the axis (0-1). Negative value to use default deadzone"
-              }
-            }
-          },
-          "SetJoystickDeadzone": {
-            "list-name": "Set Joystick Deadzone",
-            "display-text": "Set joystick [i]{0}[/i] deadzone to [i]{1}[/i]",
-            "description": "Set the deadzone for a joystick",
-            "params": {
-              "name": {
-                "name": "Name",
-                "desc": "The name of the input"
-              },
-              "deadzone": {
-                "name": "Deadzone",
-                "desc": "The deadzone for the joystick (0-1). Negative value to use default deadzone"
-              }
-            }
-          },
-          "WireTo": {
-            "list-name": "Map Wire To Player",
-            "display-text": "Map wire [i]{0}[/i] to player [i]{1}[/i]",
-            "description": "Map a wire to a player",
-            "params": {
-              "name": {
-                "name": "Name",
-                "desc": "The name of the wire"
-              },
-              "player": {
-                "name": "Player",
-                "desc": "The player ID, -1 for all players"
+              "index": {
+                "name": "Index",
+                "desc": "The index to set the layer as a child of the target layer"
               }
             }
           }
         },
         "conditions": {
-          "IsDown": {
-            "list-name": "Is Down",
-            "display-text": "Is [i]{0}[/i] down for player [i]{1}[/i]",
-            "description": "Test if an input is down",
+          "IsLayerChildOfLayer": {
+            "list-name": "Is Layer Child Of Layer",
+            "display-text": "Is layer [i]{0}[/i] child of layer [i]{1}[/i]",
+            "description": "Test if a layer is a child of another layer",
             "params": {
-              "name": {
-                "name": "Name",
-                "desc": "The name of the input"
+              "childLayer": {
+                "name": "Child Layer",
+                "desc": "The child layer"
               },
-              "player": {
-                "name": "Player",
-                "desc": "The player ID, -1 for all players"
+              "parentLayer": {
+                "name": "Parent Layer",
+                "desc": "The parent layer"
               }
             }
           },
-          "IsAnyDown": {
-            "list-name": "Is Any Down",
-            "display-text": "Is any input down for player [i]{0}[/i]",
-            "description": "Test if any input is down",
+          "IsLayerRoot": {
+            "list-name": "Is Layer Root",
+            "display-text": "Is layer [i]{0}[/i] root",
+            "description": "Test if a layer is a root layer",
             "params": {
-              "player": {
-                "name": "Player",
-                "desc": "The player ID, -1 for all players"
+              "layer": {
+                "name": "Layer",
+                "desc": "The layer"
               }
             }
           },
-          "IsDownControlScheme": {
-            "list-name": "Is Down For Control Scheme",
-            "display-text": "Is [i]{0}[/i] down for player [i]{1}[/i] with control scheme [i]{2}[/i]",
-            "description": "Test if an input is down for a specific control scheme",
+          "LayerExists": {
+            "list-name": "Layer Exists",
+            "display-text": "Layer [i]{0}[/i] exists",
+            "description": "Test if a layer exists",
             "params": {
-              "name": {
-                "name": "Name",
-                "desc": "The name of the input"
+              "layer": {
+                "name": "Layer",
+                "desc": "The layer"
+              }
+            }
+          },
+          "LayerHasChildren": {
+            "list-name": "Layer Has Children",
+            "display-text": "Layer [i]{0}[/i] has children",
+            "description": "Test if a layer has children",
+            "params": {
+              "layer": {
+                "name": "Layer",
+                "desc": "The layer"
+              }
+            }
+          },
+          "IsLayerChildOfLayerOnLayout": {
+            "list-name": "Is Layer Child Of Layer On Layout",
+            "display-text": "Is layer [i]{1}[/i] child of layer [i]{2}[/i] on layout [i]{0}[/i]",
+            "description": "Test if a layer is a child of another layer on a layout",
+            "params": {
+              "layout": {
+                "name": "Layout",
+                "desc": "The layout"
               },
-              "player": {
-                "name": "Player",
-                "desc": "The player ID, -1 for all players"
+              "childLayer": {
+                "name": "Child Layer",
+                "desc": "The child layer"
               },
-              "controlScheme": {
-                "name": "Control Scheme",
-                "desc": "The control scheme to test"
+              "parentLayer": {
+                "name": "Parent Layer",
+                "desc": "The parent layer"
               }
             }
           },
-          "IsAnyDownControlScheme": {
-            "list-name": "Is Any Down For Control Scheme",
-            "display-text": "Is any input down for player [i]{0}[/i] with control scheme [i]{1}[/i]",
-            "description": "Test if any input is down for a specific control scheme",
+          "IsLayerRootOnLayout": {
+            "list-name": "Is Layer Root On Layout",
+            "display-text": "Is layer [i]{1}[/i] root on layout [i]{0}[/i]",
+            "description": "Test if a layer is a root layer on a layout",
             "params": {
-              "player": {
-                "name": "Player",
-                "desc": "The player ID, -1 for all players"
+              "layout": {
+                "name": "Layout",
+                "desc": "The layout"
               },
-              "controlScheme": {
-                "name": "Control Scheme",
-                "desc": "The control scheme to test"
+              "layer": {
+                "name": "Layer",
+                "desc": "The layer"
               }
             }
           },
-          "OnDown": {
-            "list-name": "On Down",
-            "display-text": "On [i]{0}[/i] down for player [i]{1}[/i]",
-            "description": "Trigger an event when an input is pressed down",
+          "LayerExistsOnLayout": {
+            "list-name": "Layer Exists On Layout",
+            "display-text": "Layer [i]{1}[/i] exists on layout [i]{0}[/i]",
+            "description": "Test if a layer exists on a layout",
             "params": {
-              "name": {
-                "name": "Name",
-                "desc": "The name of the input"
+              "layout": {
+                "name": "Layout",
+                "desc": "The layout"
               },
-              "player": {
-                "name": "Player",
-                "desc": "The player ID, -1 for all players"
+              "layer": {
+                "name": "Layer",
+                "desc": "The layer"
               }
             }
           },
-          "OnUp": {
-            "list-name": "On Up",
-            "display-text": "On [i]{0}[/i] up for player [i]{1}[/i]",
-            "description": "Trigger an event when an input is released",
+          "LayerHasChildrenOnLayout": {
+            "list-name": "Layer Has Children On Layout",
+            "display-text": "Layer [i]{1}[/i] has children on layout [i]{0}[/i]",
+            "description": "Test if a layer has children on a layout",
             "params": {
-              "name": {
-                "name": "Name",
-                "desc": "The name of the input"
+              "layout": {
+                "name": "Layout",
+                "desc": "The layout"
               },
-              "player": {
-                "name": "Player",
-                "desc": "The player ID, -1 for all players"
-              }
-            }
-          },
-          "OnAnyDown": {
-            "list-name": "On Any Down",
-            "display-text": "On any input down for player [i]{0}[/i]",
-            "description": "Trigger an event when any input is pressed down",
-            "params": {
-              "player": {
-                "name": "Player",
-                "desc": "The player ID, -1 for all players"
-              }
-            }
-          },
-          "OnAnyUp": {
-            "list-name": "On Any Up",
-            "display-text": "On any input up for player [i]{0}[/i]",
-            "description": "Trigger an event when any input is released",
-            "params": {
-              "player": {
-                "name": "Player",
-                "desc": "The player ID, -1 for all players"
-              }
-            }
-          },
-          "IsControlSchemeEnabled": {
-            "list-name": "Is Control Scheme Enabled",
-            "display-text": "Is control scheme [i]{0}[/i] enabled for player [i]{1}[/i]",
-            "description": "Test if a control scheme is enabled",
-            "params": {
-              "name": {
-                "name": "Name",
-                "desc": "The name of the control scheme"
-              },
-              "player": {
-                "name": "Player",
-                "desc": "The player ID, -1 for all players"
-              }
-            }
-          },
-          "IsAxisOutsideDeadzone": {
-            "list-name": "Is Axis Outside Deadzone",
-            "display-text": "Is axis [i]{0}[/i] outside deadzone for player [i]{1}[/i]",
-            "description": "Test if an axis is outside its deadzone",
-            "params": {
-              "name": {
-                "name": "Name",
-                "desc": "The name of the axis"
-              },
-              "player": {
-                "name": "Player",
-                "desc": "The player ID, -1 for all players"
-              }
-            }
-          },
-          "IsAxisOutsideDeadzoneControlScheme": {
-            "list-name": "Is Axis Outside Deadzone For Control Scheme",
-            "display-text": "Is axis [i]{0}[/i] outside deadzone for player [i]{1}[/i] and control scheme [i]{2}[/i]",
-            "description": "Test if an axis is outside its deadzone for a control scheme",
-            "params": {
-              "name": {
-                "name": "Name",
-                "desc": "The name of the axis"
-              },
-              "player": {
-                "name": "Player",
-                "desc": "The player ID, -1 for all players"
-              },
-              "controlScheme": {
-                "name": "Control Scheme",
-                "desc": "The control scheme to test"
-              }
-            }
-          },
-          "IsAnyAxisOutsideDeadzone": {
-            "list-name": "Is Any Axis Outside Deadzone",
-            "display-text": "Is any axis outside deadzone for player [i]{0}[/i]",
-            "description": "Test if any axis is outside its deadzone",
-            "params": {
-              "player": {
-                "name": "Player",
-                "desc": "The player ID, -1 for all players"
-              }
-            }
-          },
-          "IsAnyAxisOutsideDeadzoneControlScheme": {
-            "list-name": "Is Any Axis Outside Deadzone For Control Scheme",
-            "display-text": "Is any axis outside deadzone for player [i]{0}[/i] and control scheme [i]{1}[/i]",
-            "description": "Test if any axis is outside its deadzone for a control scheme",
-            "params": {
-              "player": {
-                "name": "Player",
-                "desc": "The player ID, -1 for all players"
-              },
-              "controlScheme": {
-                "name": "Control Scheme",
-                "desc": "The control scheme to test"
-              }
-            }
-          },
-          "IsJoystickOutsideDeadzone": {
-            "list-name": "Is Joystick Outside Deadzone",
-            "display-text": "Is joystick [i]{0}[/i] outside deadzone for player [i]{1}[/i]",
-            "description": "Test if a joystick is outside its deadzone",
-            "params": {
-              "name": {
-                "name": "Name",
-                "desc": "The name of the joystick"
-              },
-              "player": {
-                "name": "Player",
-                "desc": "The player ID, -1 for all players"
-              }
-            }
-          },
-          "IsJoystickOutsideDeadzoneControlScheme": {
-            "list-name": "Is Joystick Outside Deadzone For Control Scheme",
-            "display-text": "Is joystick [i]{0}[/i] outside deadzone for player [i]{1}[/i] and control scheme [i]{2}[/i]",
-            "description": "Test if a joystick is outside its deadzone for a control scheme",
-            "params": {
-              "name": {
-                "name": "Name",
-                "desc": "The name of the joystick"
-              },
-              "player": {
-                "name": "Player",
-                "desc": "The player ID, -1 for all players"
-              },
-              "controlScheme": {
-                "name": "Control Scheme",
-                "desc": "The control scheme to test"
-              }
-            }
-          },
-          "IsAnyJoystickOutsideDeadzone": {
-            "list-name": "Is Any Joystick Outside Deadzone",
-            "display-text": "Is any joystick outside deadzone for player [i]{0}[/i]",
-            "description": "Test if any joystick is outside its deadzone",
-            "params": {
-              "player": {
-                "name": "Player",
-                "desc": "The player ID, -1 for all players"
-              }
-            }
-          },
-          "IsAnyJoystickOutsideDeadzoneControlScheme": {
-            "list-name": "Is Any Joystick Outside Deadzone For Control Scheme",
-            "display-text": "Is any joystick outside deadzone for player [i]{0}[/i] and control scheme [i]{1}[/i]",
-            "description": "Test if any joystick is outside its deadzone for a control scheme",
-            "params": {
-              "player": {
-                "name": "Player",
-                "desc": "The player ID, -1 for all players"
-              },
-              "controlScheme": {
-                "name": "Control Scheme",
-                "desc": "The control scheme to test"
+              "layer": {
+                "name": "Layer",
+                "desc": "The layer"
               }
             }
           }
         },
         "expressions": {
-          "LastInput": {
-            "translated-name": "LastInput",
-            "description": "Get the name of the last input from trigger",
+          "RootLayerCount": {
+            "translated-name": "RootLayerCount",
+            "description": "Get the number of root layers",
             "params": {}
           },
-          "LastPlayer": {
-            "translated-name": "LastPlayer",
-            "description": "Get the ID of the last player from trigger",
-            "params": {}
-          },
-          "GetAxis": {
-            "translated-name": "GetAxis",
-            "description": "Get the value of an axis",
+          "SubLayerCount": {
+            "translated-name": "SubLayerCount",
+            "description": "Get the number of sub layers",
             "params": {
-              "name": {
-                "name": "Name",
-                "desc": "The name of the axis"
+              "root": {
+                "name": "Root",
+                "desc": "The root layer"
+              }
+            }
+          },
+          "SubLayerAt": {
+            "translated-name": "SubLayerAt",
+            "description": "Get the name of a sub layer",
+            "params": {
+              "root": {
+                "name": "Root",
+                "desc": "The root layer"
               },
-              "player": {
-                "name": "Player",
-                "desc": "The player ID"
+              "index": {
+                "name": "Index",
+                "desc": "The index of the sub layer"
               }
             }
           },
-          "GetRawAxis": {
-            "translated-name": "GetRawAxis",
-            "description": "Get the raw value of an axis",
+          "RootLayerAt": {
+            "translated-name": "RootLayerAt",
+            "description": "Get the name of a root layer",
             "params": {
-              "name": {
-                "name": "Name",
-                "desc": "The name of the axis"
+              "index": {
+                "name": "Index",
+                "desc": "The index of the root layer"
+              }
+            }
+          },
+          "RootLayerCountOnLayout": {
+            "translated-name": "RootLayerCountOnLayout",
+            "description": "Get the number of root layers on a layout",
+            "params": {
+              "layout": {
+                "name": "Layout",
+                "desc": "The layout"
+              }
+            }
+          },
+          "SubLayerCountOnLayout": {
+            "translated-name": "SubLayerCountOnLayout",
+            "description": "Get the number of sub layers on a layout",
+            "params": {
+              "layout": {
+                "name": "Layout",
+                "desc": "The layout"
               },
-              "player": {
-                "name": "Player",
-                "desc": "The player ID"
+              "root": {
+                "name": "Root",
+                "desc": "The root layer"
               }
             }
           },
-          "GetJoystickX": {
-            "translated-name": "GetJoystickX",
-            "description": "Get the x value of a joystick",
+          "SubLayerAtOnLayout": {
+            "translated-name": "SubLayerAtOnLayout",
+            "description": "Get the name of a sub layer on a layout",
             "params": {
-              "name": {
-                "name": "Name",
-                "desc": "The name of the joystick"
+              "layout": {
+                "name": "Layout",
+                "desc": "The layout"
               },
-              "player": {
-                "name": "Player",
-                "desc": "The player ID"
-              }
-            }
-          },
-          "GetRawJoystickX": {
-            "translated-name": "GetRawJoystickX",
-            "description": "Get the raw x value of a joystick",
-            "params": {
-              "name": {
-                "name": "Name",
-                "desc": "The name of the joystick"
+              "root": {
+                "name": "Root",
+                "desc": "The root layer"
               },
-              "player": {
-                "name": "Player",
-                "desc": "The player ID"
+              "index": {
+                "name": "Index",
+                "desc": "The index of the sub layer"
               }
             }
           },
-          "GetJoystickY": {
-            "translated-name": "GetJoystickY",
-            "description": "Get the y value of a joystick",
+          "RootLayerAtOnLayout": {
+            "translated-name": "RootLayerAtOnLayout",
+            "description": "Get the name of a root layer on a layout",
             "params": {
-              "name": {
-                "name": "Name",
-                "desc": "The name of the joystick"
+              "layout": {
+                "name": "Layout",
+                "desc": "The layout"
               },
-              "player": {
-                "name": "Player",
-                "desc": "The player ID"
-              }
-            }
-          },
-          "GetRawJoystickY": {
-            "translated-name": "GetRawJoystickY",
-            "description": "Get the raw y value of a joystick",
-            "params": {
-              "name": {
-                "name": "Name",
-                "desc": "The name of the joystick"
-              },
-              "player": {
-                "name": "Player",
-                "desc": "The player ID"
-              }
-            }
-          },
-          "GetJoystickAngle": {
-            "translated-name": "GetJoystickAngle",
-            "description": "Get the angle of a joystick",
-            "params": {
-              "name": {
-                "name": "Name",
-                "desc": "The name of the joystick"
-              },
-              "player": {
-                "name": "Player",
-                "desc": "The player ID"
-              }
-            }
-          },
-          "GetJoystickMagnitude": {
-            "translated-name": "GetJoystickMagnitude",
-            "description": "Get the magnitude of a joystick",
-            "params": {
-              "name": {
-                "name": "Name",
-                "desc": "The name of the joystick"
-              },
-              "player": {
-                "name": "Player",
-                "desc": "The player ID"
-              }
-            }
-          },
-          "GetRawJoystickMagnitude": {
-            "translated-name": "GetRawJoystickMagnitude",
-            "description": "Get the raw magnitude of a joystick",
-            "params": {
-              "name": {
-                "name": "Name",
-                "desc": "The name of the joystick"
-              },
-              "player": {
-                "name": "Player",
-                "desc": "The player ID"
-              }
-            }
-          },
-          "GetControlScheme": {
-            "translated-name": "GetControlScheme",
-            "description": "Get the name of the current control scheme",
-            "params": {
-              "player": {
-                "name": "Player",
-                "desc": "The player ID"
-              }
-            }
-          },
-          "WireFrom": {
-            "translated-name": "WireFrom",
-            "description": "Wire a control scheme to a player using an id",
-            "params": {
-              "name": {
-                "name": "Name",
-                "desc": "The name of the wire"
+              "index": {
+                "name": "Index",
+                "desc": "The index of the root layer"
               }
             }
           }

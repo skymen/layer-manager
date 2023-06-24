@@ -1,234 +1,134 @@
 const C3 = self.C3;
 
 const PLUGIN_INFO = {
-  id: "skymen_better_input_manager",
+  id: "skymen_layer_manager",
   Acts: {
-    "SetDownInput": {
-          "forward": (inst) => inst._SetDownInput,
+    "CreateLayer": {
+          "forward": (inst) => inst._CreateLayer,
           
           "autoScriptInterface": true,
           },
-"SetUpInput": {
-          "forward": (inst) => inst._SetUpInput,
+"CreateLayerOnLayout": {
+          "forward": (inst) => inst._CreateLayerOnLayout,
           
           "autoScriptInterface": true,
           },
-"SimulateDownInput": {
-          "forward": (inst) => inst._SimulateDownInput,
+"DestroyLayer": {
+          "forward": (inst) => inst._DestroyLayer,
           
           "autoScriptInterface": true,
           },
-"SimulateUpInput": {
-          "forward": (inst) => inst._SimulateUpInput,
+"DestroyLayerOnLayout": {
+          "forward": (inst) => inst._DestroyLayerOnLayout,
           
           "autoScriptInterface": true,
           },
-"SetAxisValue": {
-          "forward": (inst) => inst._SetAxisValue,
+"MoveLayerToLayer": {
+          "forward": (inst) => inst._MoveLayerToLayer,
           
           "autoScriptInterface": true,
           },
-"SetJoystickValue": {
-          "forward": (inst) => inst._SetJoystickValue,
+"SetLayerAsChildOfLayer": {
+          "forward": (inst) => inst._SetLayerAsChildOfLayer,
           
           "autoScriptInterface": true,
           },
-"SetJoystickValueX": {
-          "forward": (inst) => inst._SetJoystickValueX,
+"SetLayerAsRoot": {
+          "forward": (inst) => inst._SetLayerAsRoot,
           
           "autoScriptInterface": true,
           },
-"SetJoystickValueY": {
-          "forward": (inst) => inst._SetJoystickValueY,
+"SetLayerAsRootOnLayout": {
+          "forward": (inst) => inst._SetLayerAsRootOnLayout,
           
           "autoScriptInterface": true,
           },
-"SetControlScheme": {
-          "forward": (inst) => inst._SetControlScheme,
-          
-          "autoScriptInterface": true,
-          },
-"SetAutoSwitchControlScheme": {
-          "forward": (inst) => inst._SetAutoSwitchControlScheme,
-          
-          "autoScriptInterface": true,
-          },
-"SetDefaultAxisDeadzone": {
-          "forward": (inst) => inst._SetDefaultAxisDeadzone,
-          
-          "autoScriptInterface": true,
-          },
-"SetDefaultJoystickDeadzone": {
-          "forward": (inst) => inst._SetDefaultJoystickDeadzone,
-          
-          "autoScriptInterface": true,
-          },
-"SetAxisDeadzone": {
-          "forward": (inst) => inst._SetAxisDeadzone,
-          
-          "autoScriptInterface": true,
-          },
-"SetJoystickDeadzone": {
-          "forward": (inst) => inst._SetJoystickDeadzone,
-          
-          "autoScriptInterface": true,
-          },
-"WireTo": {
-          "forward": (inst) => inst._WireTo,
+"SetLayerAsChildOfLayerOnLayout": {
+          "forward": (inst) => inst._SetLayerAsChildOfLayerOnLayout,
           
           "autoScriptInterface": true,
           }
   },
   Cnds: {
-    "IsDown": {
-          "forward": (inst) => inst._IsDown,
+    "IsLayerChildOfLayer": {
+          "forward": (inst) => inst._IsLayerChildOfLayer,
           
           "autoScriptInterface": true,
         },
-"IsAnyDown": {
-          "forward": (inst) => inst._IsAnyDown,
+"IsLayerRoot": {
+          "forward": (inst) => inst._IsLayerRoot,
           
           "autoScriptInterface": true,
         },
-"IsDownControlScheme": {
-          "forward": (inst) => inst._IsDownControlScheme,
+"LayerExists": {
+          "forward": (inst) => inst._LayerExists,
           
           "autoScriptInterface": true,
         },
-"IsAnyDownControlScheme": {
-          "forward": (inst) => inst._IsAnyDownControlScheme,
+"LayerHasChildren": {
+          "forward": (inst) => inst._LayerHasChildren,
           
           "autoScriptInterface": true,
         },
-"OnDown": {
-          "forward": (inst) => inst._OnDown,
+"IsLayerChildOfLayerOnLayout": {
+          "forward": (inst) => inst._IsLayerChildOfLayerOnLayout,
           
           "autoScriptInterface": true,
         },
-"OnUp": {
-          "forward": (inst) => inst._OnUp,
+"IsLayerRootOnLayout": {
+          "forward": (inst) => inst._IsLayerRootOnLayout,
           
           "autoScriptInterface": true,
         },
-"OnAnyDown": {
-          "forward": (inst) => inst._OnAnyDown,
+"LayerExistsOnLayout": {
+          "forward": (inst) => inst._LayerExistsOnLayout,
           
           "autoScriptInterface": true,
         },
-"OnAnyUp": {
-          "forward": (inst) => inst._OnAnyUp,
-          
-          "autoScriptInterface": true,
-        },
-"IsControlSchemeEnabled": {
-          "forward": (inst) => inst._IsControlSchemeEnabled,
-          
-          "autoScriptInterface": true,
-        },
-"IsAxisOutsideDeadzone": {
-          "forward": (inst) => inst._IsAxisOutsideDeadzone,
-          
-          "autoScriptInterface": true,
-        },
-"IsAxisOutsideDeadzoneControlScheme": {
-          "forward": (inst) => inst._IsAxisOutsideDeadzoneControlScheme,
-          
-          "autoScriptInterface": true,
-        },
-"IsAnyAxisOutsideDeadzone": {
-          "forward": (inst) => inst._IsAnyAxisOutsideDeadzone,
-          
-          "autoScriptInterface": true,
-        },
-"IsAnyAxisOutsideDeadzoneControlScheme": {
-          "forward": (inst) => inst._IsAnyAxisOutsideDeadzoneControlScheme,
-          
-          "autoScriptInterface": true,
-        },
-"IsJoystickOutsideDeadzone": {
-          "forward": (inst) => inst._IsJoystickOutsideDeadzone,
-          
-          "autoScriptInterface": true,
-        },
-"IsJoystickOutsideDeadzoneControlScheme": {
-          "forward": (inst) => inst._IsJoystickOutsideDeadzoneControlScheme,
-          
-          "autoScriptInterface": true,
-        },
-"IsAnyJoystickOutsideDeadzone": {
-          "forward": (inst) => inst._IsAnyJoystickOutsideDeadzone,
-          
-          "autoScriptInterface": true,
-        },
-"IsAnyJoystickOutsideDeadzoneControlScheme": {
-          "forward": (inst) => inst._IsAnyJoystickOutsideDeadzoneControlScheme,
+"LayerHasChildrenOnLayout": {
+          "forward": (inst) => inst._LayerHasChildrenOnLayout,
           
           "autoScriptInterface": true,
         }
   },
   Exps: {
-    "LastInput": {
-          "forward": (inst) => inst._GetLastInput,
+    "RootLayerCount": {
+          "forward": (inst) => inst._RootLayerCount,
           
           "autoScriptInterface": true,
         },
-"LastPlayer": {
-          "forward": (inst) => inst._GetLastPlayer,
+"SubLayerCount": {
+          "forward": (inst) => inst._SubLayerCount,
           
           "autoScriptInterface": true,
         },
-"GetAxis": {
-          "forward": (inst) => inst._GetAxis,
+"SubLayerAt": {
+          "forward": (inst) => inst._SubLayerAt,
           
           "autoScriptInterface": true,
         },
-"GetRawAxis": {
-          "forward": (inst) => inst._GetRawAxis,
+"RootLayerAt": {
+          "forward": (inst) => inst._RootLayerAt,
           
           "autoScriptInterface": true,
         },
-"GetJoystickX": {
-          "forward": (inst) => inst._GetJoystickX,
+"RootLayerCountOnLayout": {
+          "forward": (inst) => inst._RootLayerCountOnLayout,
           
           "autoScriptInterface": true,
         },
-"GetRawJoystickX": {
-          "forward": (inst) => inst._GetRawJoystickX,
+"SubLayerCountOnLayout": {
+          "forward": (inst) => inst._SubLayerCountOnLayout,
           
           "autoScriptInterface": true,
         },
-"GetJoystickY": {
-          "forward": (inst) => inst._GetJoystickY,
+"SubLayerAtOnLayout": {
+          "forward": (inst) => inst._SubLayerAtOnLayout,
           
           "autoScriptInterface": true,
         },
-"GetRawJoystickY": {
-          "forward": (inst) => inst._GetRawJoystickY,
-          
-          "autoScriptInterface": true,
-        },
-"GetJoystickAngle": {
-          "forward": (inst) => inst._GetJoystickAngle,
-          
-          "autoScriptInterface": true,
-        },
-"GetJoystickMagnitude": {
-          "forward": (inst) => inst._GetJoystickMagnitude,
-          
-          "autoScriptInterface": true,
-        },
-"GetRawJoystickMagnitude": {
-          "forward": (inst) => inst._GetRawJoystickMagnitude,
-          
-          "autoScriptInterface": true,
-        },
-"GetControlScheme": {
-          "forward": (inst) => inst._GetControlScheme,
-          
-          "autoScriptInterface": true,
-        },
-"WireFrom": {
-          "forward": (inst) => inst._WireFrom,
+"RootLayerAtOnLayout": {
+          "forward": (inst) => inst._RootLayerAtOnLayout,
           
           "autoScriptInterface": true,
         }
@@ -265,17 +165,6 @@ function getScriptInterface(parentClass, map) {
     constructor() {
       super();
       map.set(this, self.IInstance._GetInitInst().GetSdkInstance());
-    }
-
-    GetJoystick(name, player) {
-      const sdkInst = map.get(this);
-      if (player >= 0) {
-        return sdkInst.GetJoystickInputState(name, player);
-      }
-      return {
-        x: 0,
-        y: 0,
-      };
     }
   };
 }
@@ -342,30 +231,273 @@ Object.keys(PLUGIN_INFO.Exps).forEach((key) => {
 //============ ACES ============
 
 function getInstanceJs() {
+  function getNewLayerData({
+    name = "",
+    visible = true,
+    backgroundColor = [0, 0, 0],
+    transparent = true,
+    parallaxX = 1,
+    parallaxY = 1,
+    opacity = 1,
+    forceOwnTexture = true,
+    useRenderCells = true,
+    scaleRate = 1,
+    blendMode = 0,
+    isInteractive = true,
+    zElevation = 0,
+    renderAs3D = true,
+    useCameraDistanceDrawOrder = false,
+    subLayers = [],
+  } = {}) {
+    return [
+      name,
+      0,
+      Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
+      visible,
+      backgroundColor,
+      transparent,
+      parallaxX,
+      parallaxY,
+      opacity,
+      forceOwnTexture,
+      useRenderCells,
+      scaleRate,
+      blendMode,
+      isInteractive,
+      [],
+      [],
+      zElevation,
+      renderAs3D,
+      useCameraDistanceDrawOrder,
+      subLayers,
+    ];
+  }
+
+  const layerMap = new Map();
+
+  function registerLayer(layer) {
+    if (!layerMap.has(layer._index)) layerMap.set(layer._index, layer);
+  }
+
+  let oldC3Layout = C3.Layout;
+  C3.Layout = class extends oldC3Layout {
+    constructor(...args) {
+      super(...args);
+      this._skymen_tempLayers = [];
+    }
+
+    _skymen_CreateLayer(options, temporary) {
+      const layerData = getNewLayerData(options);
+      if (this._allLayersFlat.find((x) => x._name === layerData[0]))
+        throw "Layer with this name already exists on the layout";
+      const layer = C3.New(C3.Layer, this, null, layerData);
+      this._rootLayers.push(layer);
+      this._allLayersFlat = [...this.allLayers()];
+      for (let i = 0, len = this._allLayersFlat.length; i < len; ++i) {
+        const layer = this._allLayersFlat[i];
+        layer._SetIndex(i);
+        this._layersByName.set(layer.GetName().toLowerCase(), layer);
+        this._layersBySid.set(layer.GetSID(), layer);
+      }
+      layer._Init();
+      if (temporary) {
+        this._skymen_tempLayers.push(layer);
+      }
+    }
+
+    _skymen_RemoveLayer(layer) {
+      // Remove the layer from _allLayersFlat array
+      this._allLayersFlat = this._allLayersFlat.filter((l) => l !== layer);
+
+      // Remove the layer from _layersByName map
+      this._layersByName.delete(layer.GetName().toLowerCase());
+
+      // Remove the layer from _layersBySid map
+      this._layersBySid.delete(layer.GetSID());
+
+      // If the layer has a parent, remove it from the parent's _subLayers array
+      if (layer._parentLayer) {
+        layer._parentLayer._subLayers = layer._parentLayer._subLayers.filter(
+          (l) => l !== layer
+        );
+      } else {
+        // If the layer has no parent, it should be a root layer
+        this._rootLayers = this._rootLayers.filter((l) => l !== layer);
+      }
+
+      // Update _layersByName and _layersBySid maps
+      for (let i = 0, len = this._allLayersFlat.length; i < len; ++i) {
+        const layer = this._allLayersFlat[i];
+        layer._SetIndex(i);
+      }
+    }
+
+    _skymen_MoveLayer(layer, parentLayer, id) {
+      // Remove the old layer
+      this._skymen_RemoveLayer(layer);
+
+      // Change the parent of the layer
+      layer._parentLayer = parentLayer;
+
+      // Add it to its new parent's _subLayers at the specified position
+      if (parentLayer) {
+        parentLayer._subLayers.splice(id, 0, layer);
+      } else {
+        // If no parentLayer is specified, then it should be added to the root
+        this._rootLayers.splice(id, 0, layer);
+      }
+
+      // Rebuild the _allLayersFlat array
+      this._allLayersFlat = [...this.allLayers()];
+
+      // Update _layersByName and _layersBySid maps
+      for (let i = 0, len = this._allLayersFlat.length; i < len; ++i) {
+        const layer = this._allLayersFlat[i];
+        layer._SetIndex(i);
+        this._layersByName.set(layer.GetName().toLowerCase(), layer);
+        this._layersBySid.set(layer.GetSID(), layer);
+      }
+    }
+
+    _skymen_MoveLayerToLayer(layer, otherLayer, before) {
+      // If before is true, we want to move the layer before otherLayer, else after it
+      const id = before ? otherLayer._index : otherLayer._index + 1;
+
+      // Move the layer
+      this._skymen_MoveLayer(layer, otherLayer._parentLayer, id);
+    }
+
+    async _StopRunning() {
+      // Destroy all temporary layers
+      for (let i = 0, len = this._skymen_tempLayers.length; i < len; ++i) {
+        this._skymen_tempLayers[i]._skymen_Destroy();
+      }
+      await super._StopRunning();
+    }
+  };
+
+  let oldC3Layer = C3.Layer;
+  C3.Layer = class extends oldC3Layer {
+    constructor(...args) {
+      super(...args);
+    }
+
+    _skymen_Destroy() {
+      this._layout._skymen_RemoveLayer(this);
+    }
+
+    _Init(...args) {
+      super._Init(...args);
+      registerLayer(this);
+    }
+  };
+
+  let oldILayer = self.ILayer;
+  self.ILayer = class ILayer extends oldILayer {
+    constructor(layer) {
+      super(layer);
+      this._sdkLayer = layer;
+    }
+
+    get _realIndex() {
+      return this._sdkLayer.GetIndex();
+    }
+  };
+
+  function hackC3Runtime(runtime) {
+    let oldFn = runtime._CreateChildInstancesFromData.bind(runtime);
+    runtime._CreateChildInstancesFromData = function (
+      parentInstance,
+      parentWorldData,
+      parentWorldInfo,
+      layer,
+      x,
+      y,
+      creatingHierarchy
+    ) {
+      const parentZIndex = parentWorldInfo.GetSceneGraphZIndexExportData();
+      const childrenData = parentWorldInfo.GetSceneGraphChildrenExportData();
+      parentInstance.GetWorldInfo().SetSceneGraphZIndex(parentZIndex);
+      if (!childrenData) return;
+      if (typeof x === "undefined") x = parentWorldData[0];
+      if (typeof y === "undefined") y = parentWorldData[1];
+      const sceneGraphSiblings = new Set();
+      const parentX = parentWorldData[0];
+      const parentY = parentWorldData[1];
+      for (const childData of childrenData) {
+        const childLayoutSID = childData[0];
+        const childLayerIndex = childData[1];
+        const childUID = childData[2];
+        const childFlags = childData[3];
+        const childIsInContainer = !!childData[4];
+        const childZIndex = childData[5];
+        const uniqueInstanceData = childData[6];
+        let childInstData;
+        if (uniqueInstanceData) childInstData = uniqueInstanceData;
+        else {
+          const layout = this._layoutManager.GetLayoutBySID(childLayoutSID);
+          const l = layerMap.get(childLayerIndex);
+          childInstData = l.GetInitialInstanceData(childUID);
+        }
+        const childObjectClass = this.GetObjectClassByIndex(childInstData[1]);
+        const hasSibling = parentInstance.HasSibling(childObjectClass);
+        const siblingProcessed = sceneGraphSiblings.has(childObjectClass);
+        if (hasSibling && !siblingProcessed && childIsInContainer) {
+          const childInst = parentInstance.GetSibling(childObjectClass);
+          const childX = x + childInstData[0][0] - parentX;
+          const childY = y + childInstData[0][1] - parentY;
+          childInst.GetWorldInfo().SetXY(childX, childY);
+          childInst.GetWorldInfo().SetSceneGraphZIndex(childZIndex);
+          parentInstance.AddChild(childInst, {
+            transformX: !!((childFlags >> 0) & 1),
+            transformY: !!((childFlags >> 1) & 1),
+            transformWidth: !!((childFlags >> 2) & 1),
+            transformHeight: !!((childFlags >> 3) & 1),
+            transformAngle: !!((childFlags >> 4) & 1),
+            destroyWithParent: !!((childFlags >> 5) & 1),
+            transformZElevation: !!((childFlags >> 6) & 1),
+            transformOpacity: !!((childFlags >> 7) & 1),
+            transformVisibility: !!((childFlags >> 8) & 1),
+          });
+          sceneGraphSiblings.add(childObjectClass);
+        } else {
+          const childX = x + childInstData[0][0] - parentX;
+          const childY = y + childInstData[0][1] - parentY;
+          const childInst = this.CreateInstanceFromData(
+            childInstData,
+            layer,
+            false,
+            childX,
+            childY,
+            false,
+            true,
+            parentInstance,
+            creatingHierarchy
+          );
+          childInst.GetWorldInfo().SetSceneGraphZIndex(childZIndex);
+          parentInstance.AddChild(childInst, {
+            transformX: !!((childFlags >> 0) & 1),
+            transformY: !!((childFlags >> 1) & 1),
+            transformWidth: !!((childFlags >> 2) & 1),
+            transformHeight: !!((childFlags >> 3) & 1),
+            transformAngle: !!((childFlags >> 4) & 1),
+            destroyWithParent: !!((childFlags >> 5) & 1),
+            transformZElevation: !!((childFlags >> 6) & 1),
+            transformOpacity: !!((childFlags >> 7) & 1),
+            transformVisibility: !!((childFlags >> 8) & 1),
+          });
+        }
+      }
+    };
+  }
+
   return class extends C3.SDKInstanceBase {
     constructor(inst, properties) {
       super(inst);
 
-      this.defaultAxisDeadzone = 0.2;
-      this.defaultJoystickDeadzone = 0.2;
-      this.defaultControlScheme = "";
-      this.autoSwitchControlScheme = true;
-
       if (properties) {
-        this.defaultAxisDeadzone = properties[0];
-        this.defaultJoystickDeadzone = properties[1];
-        this.defaultControlScheme = properties[2];
-        this.autoSwitchControlScheme = properties[3];
       }
-
-      this.digitalInputData = new Map();
-      this.axisInputData = new Map();
-      this.joystickInputData = new Map();
-      this.playerData = new Map();
-      this.wireData = new Map();
-
-      this.lastDigitalInput = "";
-      this.lastPlayer = null;
+      hackC3Runtime(this._runtime);
     }
 
     Release() {
@@ -386,889 +518,323 @@ function getInstanceJs() {
       return scriptInterface;
     }
 
-    // ======= UTILS =======
-
-    Clamp(value, min, max) {
-      return Math.min(Math.max(value, min), max);
-    }
-
-    ForEveryPlayer(callback) {
-      for (const [key, value] of this.playerData) {
-        callback(key, value);
+    // ===== UTILS =====
+    GetLayerFromLayer(layoutName, name) {
+      const layout = this.GetLayout(layoutName);
+      if (!layout) {
+        return null;
       }
+      return layout.GetLayer(name);
     }
 
-    // ======= PLAYERS =======
-
-    AssertPlayerExists(player) {
-      if (!this.playerData.has(player)) {
-        this.playerData.set(player, {
-          controlSchemes: new Map(),
-          autoSwitchControlScheme: this.autoSwitchControlScheme,
-        });
+    GetLayer(name) {
+      const layout = this.GetRunningLayout();
+      if (!layout) {
+        return null;
       }
+      return layout.GetLayer(name);
     }
 
-    SetAutoSwitchControlScheme(player, autoSwitch) {
-      this.AssertPlayerExists(player);
-      this.playerData.get(player).autoSwitchControlScheme = autoSwitch;
-    }
-
-    GetAutoSwitchControlScheme(player) {
-      this.AssertPlayerExists(player);
-      return this.playerData.get(player).autoSwitchControlScheme;
-    }
-
-    GetPlayerActiveControlScheme(player) {
-      this.AssertPlayerExists(player);
-      for (const [key, value] of this.playerData.get(player).controlSchemes) {
-        if (this.GetControlSchemeEnabled(player, key)) {
-          return key;
-        }
-      }
-      return this.defaultControlScheme;
-    }
-
-    SchemeOrPlayerActiveControlScheme(controlScheme, player) {
-      return typeof controlScheme === "string"
-        ? controlScheme
-        : this.GetPlayerActiveControlScheme(player);
-    }
-
-    // ======= DIGITAL INPUTS =======
-
-    AssertDigitalInputExists(inputName) {
-      if (!this.digitalInputData.has(inputName)) {
-        this.digitalInputData.set(inputName, {
-          statePerPlayer: new Map(),
-        });
-      }
-    }
-
-    AssertDigitalInputHasPlayer(inputName, player) {
-      this.AssertDigitalInputExists(inputName);
-      this.AssertPlayerExists(player);
-      if (!this.digitalInputData.get(inputName).statePerPlayer.has(player)) {
-        this.digitalInputData
-          .get(inputName)
-          .statePerPlayer.set(player, new Map());
-      }
-    }
-
-    AssertDigitalInputPlayerHasControlScheme(inputName, player, controlScheme) {
-      this.AssertDigitalInputHasPlayer(inputName, player);
-      if (
-        !this.digitalInputData
-          .get(inputName)
-          .statePerPlayer.get(player)
-          .has(controlScheme)
-      ) {
-        this.digitalInputData
-          .get(inputName)
-          .statePerPlayer.get(player)
-          .set(controlScheme, false);
-      }
-    }
-
-    GetDigitalInputState(inputName, player, controlScheme) {
-      controlScheme = this.SchemeOrPlayerActiveControlScheme(
-        controlScheme,
-        player
+    GetLayout(name) {
+      return this._runtime._layoutManager._layoutsByName.get(
+        name.toLowerCase()
       );
-      this.AssertDigitalInputPlayerHasControlScheme(
-        inputName,
-        player,
-        controlScheme
-      );
-      return this.digitalInputData
-        .get(inputName)
-        .statePerPlayer.get(player)
-        .get(controlScheme);
     }
 
-    IsAnyDigitalInputDown(player, controlScheme) {
-      controlScheme = this.SchemeOrPlayerActiveControlScheme(
-        controlScheme,
-        player
-      );
-      this.AssertPlayerExists(player);
-      for (const [key, value] of this.digitalInputData) {
-        if (this.GetDigitalInputState(key, player, controlScheme)) {
-          return true;
-        }
-      }
-      return false;
+    GetRunningLayout() {
+      return this._runtime.GetMainRunningLayout();
     }
 
-    SetDigitalInputState(
-      inputName,
-      player,
-      controlScheme,
-      state,
-      preventAutoSwitch = false
+    CreateLayerOnLayout(
+      layout,
+      name,
+      useRenderCells,
+      renderAs3D,
+      useCameraDistanceDrawOrder,
+      temporary
     ) {
-      this.AssertDigitalInputPlayerHasControlScheme(
-        inputName,
-        player,
-        controlScheme
-      );
-      this.digitalInputData
-        .get(inputName)
-        .statePerPlayer.get(player)
-        .set(controlScheme, state);
-
-      if (this.GetAutoSwitchControlScheme(player) && !preventAutoSwitch) {
-        if (state) {
-          this.SwithToControlScheme(player, controlScheme);
-        }
-      }
-    }
-
-    // ======= AXIS INPUTS =======
-
-    AssertAxisInputExists(inputName) {
-      if (!this.axisInputData.has(inputName)) {
-        this.axisInputData.set(inputName, {
-          statePerPlayer: new Map(),
-          usesDefaultDeadzone: true,
-          deadzone: this.defaultAxisDeadzone,
-        });
-      }
-    }
-
-    AssertAxisInputHasPlayer(inputName, player) {
-      this.AssertAxisInputExists(inputName);
-      if (!this.axisInputData.get(inputName).statePerPlayer.has(player)) {
-        this.axisInputData.get(inputName).statePerPlayer.set(player, new Map());
-      }
-    }
-
-    AssertAxisInputPlayerHasControlScheme(inputName, player, controlScheme) {
-      this.AssertAxisInputHasPlayer(inputName, player);
-      if (
-        !this.axisInputData
-          .get(inputName)
-          .statePerPlayer.get(player)
-          .has(controlScheme)
-      ) {
-        this.axisInputData
-          .get(inputName)
-          .statePerPlayer.get(player)
-          .set(controlScheme, 0);
-      }
-    }
-
-    GetAxisInputState(inputName, player, controlScheme) {
-      controlScheme = this.SchemeOrPlayerActiveControlScheme(
-        controlScheme,
-        player
-      );
-      this.AssertAxisInputPlayerHasControlScheme(
-        inputName,
-        player,
-        controlScheme
-      );
-      return this.axisInputData
-        .get(inputName)
-        .statePerPlayer.get(player)
-        .get(controlScheme);
-    }
-
-    SetAxisInputState(
-      inputName,
-      player,
-      controlScheme,
-      state,
-      preventAutoSwitch = false
-    ) {
-      this.AssertAxisInputPlayerHasControlScheme(
-        inputName,
-        player,
-        controlScheme
-      );
-      this.axisInputData
-        .get(inputName)
-        .statePerPlayer.get(player)
-        .set(controlScheme, state);
-
-      if (this.GetAutoSwitchControlScheme(player) && !preventAutoSwitch) {
-        let deadzone = this.GetAxisInputDeadzone(inputName);
-        if (Math.abs(state) > deadzone) {
-          this.SwithToControlScheme(player, controlScheme);
-        }
-      }
-    }
-
-    SetAxisInputDeadzone(inputName, deadzone) {
-      this.AssertAxisInputExists(inputName);
-      let usesDefaultDeadzone = false;
-      if (
-        deadzone === null ||
-        deadzone === undefined ||
-        deadzone < 0 ||
-        deadzone > 1
-      ) {
-        deadzone = this.defaultAxisDeadzone;
-        usesDefaultDeadzone = true;
-      }
-      this.axisInputData.get(inputName).usesDefaultDeadzone =
-        usesDefaultDeadzone;
-      this.axisInputData.get(inputName).deadzone = deadzone;
-    }
-
-    GetAxisInputDeadzone(inputName) {
-      this.AssertAxisInputExists(inputName);
-      return this.axisInputData.get(inputName).deadzone;
-    }
-
-    GetAxisInputUsesDefaultDeadzone(inputName) {
-      this.AssertAxisInputExists(inputName);
-      return this.axisInputData.get(inputName).usesDefaultDeadzone;
-    }
-
-    IsAxisOutsideDeadzone(inputName, player, controlScheme) {
-      controlScheme = this.SchemeOrPlayerActiveControlScheme(
-        controlScheme,
-        player
-      );
-      this.AssertAxisInputPlayerHasControlScheme(
-        inputName,
-        player,
-        controlScheme
-      );
-      let deadzone = this.GetAxisInputDeadzone(inputName);
-      let state = this.GetAxisInputState(inputName, player, controlScheme);
-      return Math.abs(state) > deadzone;
-    }
-
-    IsAnyAxisOutsideDeadzone(player, controlScheme) {
-      controlScheme = this.SchemeOrPlayerActiveControlScheme(
-        controlScheme,
-        player
-      );
-      this.AssertPlayerExists(player);
-      for (const [key, value] of this.axisInputData) {
-        if (this.IsAxisOutsideDeadzone(key, player, controlScheme)) {
-          return true;
-        }
-      }
-      return false;
-    }
-
-    // ======= JOYSTICK INPUTS =======
-
-    AssertJoystickInputExists(inputName) {
-      if (!this.joystickInputData.has(inputName)) {
-        this.joystickInputData.set(inputName, {
-          statePerPlayer: new Map(),
-          usesDefaultDeadzone: true,
-          deadzone: this.defaultJoystickDeadzone,
-        });
-      }
-    }
-
-    AssertJoystickInputHasPlayer(inputName, player) {
-      this.AssertJoystickInputExists(inputName);
-      if (!this.joystickInputData.get(inputName).statePerPlayer.has(player)) {
-        this.joystickInputData
-          .get(inputName)
-          .statePerPlayer.set(player, new Map());
-      }
-    }
-
-    AssertJoystickInputPlayerHasControlScheme(
-      inputName,
-      player,
-      controlScheme
-    ) {
-      this.AssertJoystickInputHasPlayer(inputName, player);
-      if (
-        !this.joystickInputData
-          .get(inputName)
-          .statePerPlayer.get(player)
-          .has(controlScheme)
-      ) {
-        this.joystickInputData
-          .get(inputName)
-          .statePerPlayer.get(player)
-          .set(controlScheme, {
-            x: 0,
-            y: 0,
-          });
-      }
-    }
-
-    GetJoystickInputState(inputName, player, controlScheme) {
-      controlScheme = this.SchemeOrPlayerActiveControlScheme(
-        controlScheme,
-        player
-      );
-      this.AssertJoystickInputPlayerHasControlScheme(
-        inputName,
-        player,
-        controlScheme
-      );
-      return this.joystickInputData
-        .get(inputName)
-        .statePerPlayer.get(player)
-        .get(controlScheme);
-    }
-
-    SetJoystickInputState(
-      inputName,
-      player,
-      controlScheme,
-      x,
-      y,
-      preventAutoSwitch = false
-    ) {
-      this.AssertJoystickInputPlayerHasControlScheme(
-        inputName,
-        player,
-        controlScheme
-      );
-      this.joystickInputData
-        .get(inputName)
-        .statePerPlayer.get(player)
-        .set(controlScheme, {
-          x,
-          y,
-        });
-
-      if (this.GetAutoSwitchControlScheme(player) && !preventAutoSwitch) {
-        let deadzone = this.GetJoystickInputDeadzone(inputName);
-        if (Math.sqrt(x * x + y * y) > deadzone) {
-          this.SwithToControlScheme(player, controlScheme);
-        }
-      }
-    }
-
-    SetJoystickInputStateX(inputName, player, controlScheme, x) {
-      this.AssertJoystickInputPlayerHasControlScheme(
-        inputName,
-        player,
-        controlScheme
-      );
-      let y = this.joystickInputData
-        .get(inputName)
-        .statePerPlayer.get(player)
-        .get(controlScheme).y;
-      this.SetJoystickInputState(inputName, player, controlScheme, x, y);
-    }
-
-    SetJoystickInputStateY(inputName, player, controlScheme, y) {
-      this.AssertJoystickInputPlayerHasControlScheme(
-        inputName,
-        player,
-        controlScheme
-      );
-      let x = this.joystickInputData
-        .get(inputName)
-        .statePerPlayer.get(player)
-        .get(controlScheme).x;
-      this.SetJoystickInputState(inputName, player, controlScheme, x, y);
-    }
-
-    SetJoystickInputDeadzone(inputName, deadzone) {
-      this.AssertJoystickInputExists(inputName);
-      let usesDefaultDeadzone = false;
-      if (
-        deadzone === null ||
-        deadzone === undefined ||
-        deadzone < 0 ||
-        deadzone > 1
-      ) {
-        deadzone = this.defaultJoystickDeadzone;
-        usesDefaultDeadzone = true;
-      }
-      this.joystickInputData.get(inputName).usesDefaultDeadzone =
-        usesDefaultDeadzone;
-      this.joystickInputData.get(inputName).deadzone = deadzone;
-    }
-
-    GetJoystickInputDeadzone(inputName) {
-      this.AssertJoystickInputExists(inputName);
-      return this.joystickInputData.get(inputName).deadzone;
-    }
-
-    GetJoystickInputUsesDefaultDeadzone(inputName) {
-      this.AssertJoystickInputExists(inputName);
-      return this.joystickInputData.get(inputName).usesDefaultDeadzone;
-    }
-
-    IsJoystickOutsideDeadzone(inputName, player, controlScheme) {
-      controlScheme = this.SchemeOrPlayerActiveControlScheme(
-        controlScheme,
-        player
-      );
-      this.AssertJoystickInputPlayerHasControlScheme(
-        inputName,
-        player,
-        controlScheme
-      );
-      let deadzone = this.GetJoystickInputDeadzone(inputName);
-      let state = this.GetJoystickInputState(inputName, player, controlScheme);
-      return Math.sqrt(state.x * state.x + state.y * state.y) > deadzone;
-    }
-
-    IsAnyJoystickOutsideDeadzone(player, controlScheme) {
-      controlScheme = this.SchemeOrPlayerActiveControlScheme(
-        controlScheme,
-        player
-      );
-      for (let inputName of this.joystickInputData.keys()) {
-        if (this.IsJoystickOutsideDeadzone(inputName, player, controlScheme)) {
-          return true;
-        }
-      }
-      return false;
-    }
-
-    // ======= CONTROL SCHEMES =======
-
-    AssertControlSchemeExists(player, controlScheme) {
-      this.AssertPlayerExists(player);
-      let playerData = this.playerData.get(player);
-      if (!playerData.controlSchemes.has(controlScheme)) {
-        playerData.controlSchemes.set(controlScheme, {
-          enabled: controlScheme === this.defaultControlScheme,
-        });
-      }
-    }
-
-    GetControlSchemeEnabled(player, controlScheme) {
-      this.AssertControlSchemeExists(player, controlScheme);
-      let playerData = this.playerData.get(player);
-      return playerData.controlSchemes.get(controlScheme).enabled;
-    }
-
-    SetControlSchemeEnabled(player, controlScheme, enabled) {
-      this.AssertControlSchemeExists(player, controlScheme);
-      let playerData = this.playerData.get(player);
-      playerData.controlSchemes.get(controlScheme).enabled = enabled;
-    }
-
-    SwithToControlScheme(player, controlScheme) {
-      this.SetControlSchemeEnabled(player, controlScheme, true);
-      let playerData = this.playerData.get(player);
-      // Disable all other control schemes that are auto managed
-      for (const [key, value] of playerData.controlSchemes) {
-        if (key !== controlScheme) {
-          this.SetControlSchemeEnabled(player, key, false);
-        }
-      }
-    }
-
-    // ======= ACES =======
-    _DoSetDownInput(name, player, scheme, preventAutoSwitch) {
-      this.curValue = this.GetDigitalInputState(name, player, scheme);
-      if (!this.curValue) {
-        this.SetDigitalInputState(
+      layout._skymen_CreateLayer(
+        {
           name,
-          player,
-          scheme,
-          true,
-          preventAutoSwitch
-        );
-        if (this.GetControlSchemeEnabled(player, scheme)) {
-          this.lastDigitalInput = name;
-          this.lastPlayer = player;
-          this.Trigger(self.C3.Plugins.skymen_better_input_manager.Cnds.OnDown);
-          this.Trigger(
-            self.C3.Plugins.skymen_better_input_manager.Cnds.OnAnyDown
-          );
-        }
-      }
-    }
-    _SetDownInput(name, player, scheme, preventAutoSwitch) {
-      if (player >= 0) {
-        this._DoSetDownInput(name, player, scheme, preventAutoSwitch);
-      } else {
-        this.ForEveryPlayer((key) => {
-          this._DoSetDownInput(name, key, scheme, preventAutoSwitch);
-        });
-      }
-    }
-    _DoSetUpInput(name, player, scheme) {
-      this.curValue = this.GetDigitalInputState(name, player, scheme);
-      if (this.curValue) {
-        this.SetDigitalInputState(name, player, scheme, false);
-        if (this.GetControlSchemeEnabled(player, scheme)) {
-          this.lastDigitalInput = name;
-          this.lastPlayer = player;
-          this.Trigger(self.C3.Plugins.skymen_better_input_manager.Cnds.OnUp);
-          this.Trigger(
-            self.C3.Plugins.skymen_better_input_manager.Cnds.OnAnyUp
-          );
-        }
-      }
-    }
-    _SetUpInput(name, player, scheme) {
-      if (player >= 0) {
-        this._DoSetUpInput(name, player, scheme);
-      } else {
-        this.ForEveryPlayer((key) => {
-          this._DoSetUpInput(name, key, scheme);
-        });
-      }
-    }
-    _DoSimulateDownInput(name, player) {
-      this.lastDigitalInput = name;
-      this.lastPlayer = player;
-      this.Trigger(self.C3.Plugins.skymen_better_input_manager.Cnds.OnDown);
-      this.Trigger(self.C3.Plugins.skymen_better_input_manager.Cnds.OnAnyDown);
-    }
-    _SimulateDownInput(name, player) {
-      if (player >= 0) {
-        this._DoSimulateDownInput(name, player);
-      } else {
-        this.ForEveryPlayer((key) => {
-          this._DoSimulateDownInput(name, key);
-        });
-      }
-    }
-    _DoSimulateUpInput(name, player) {
-      this.lastDigitalInput = name;
-      this.lastPlayer = player;
-      this.Trigger(self.C3.Plugins.skymen_better_input_manager.Cnds.OnUp);
-      this.Trigger(self.C3.Plugins.skymen_better_input_manager.Cnds.OnAnyUp);
-    }
-    _SimulateUpInput(name, player) {
-      if (player >= 0) {
-        this._DoSimulateUpInput(name, player);
-      } else {
-        this.ForEveryPlayer((key) => {
-          this._DoSimulateUpInput(name, key);
-        });
-      }
-    }
-    _DoSetAxisValue(name, value, player, scheme, preventAutoSwitch) {
-      value = this.Clamp(value, -1, 1);
-      this.SetAxisInputState(name, player, scheme, value, preventAutoSwitch);
-    }
-    _SetAxisValue(name, value, player, scheme, preventAutoSwitch) {
-      if (player >= 0) {
-        this._DoSetAxisValue(name, value, player, scheme, preventAutoSwitch);
-      } else {
-        this.ForEveryPlayer((key) => {
-          this._DoSetAxisValue(name, value, key, scheme, preventAutoSwitch);
-        });
-      }
-    }
-    _DoSetJoystickValue(name, x, y, player, scheme, preventAutoSwitch) {
-      x = this.Clamp(x, -1, 1);
-      y = this.Clamp(y, -1, 1);
-      this.SetJoystickInputState(name, player, scheme, x, y, preventAutoSwitch);
-    }
-    _SetJoystickValue(name, x, y, player, scheme, preventAutoSwitch) {
-      if (player >= 0) {
-        this._DoSetJoystickValue(name, x, y, player, scheme, preventAutoSwitch);
-      } else {
-        this.ForEveryPlayer((key) => {
-          this._DoSetJoystickValue(name, x, y, key, scheme, preventAutoSwitch);
-        });
-      }
-    }
-    _DoSetJoystickValueX(name, x, player, scheme, preventAutoSwitch) {
-      x = this.Clamp(x, -1, 1);
-      this.SetJoystickInputStateX(name, player, scheme, x, preventAutoSwitch);
-    }
-    _SetJoystickValueX(name, x, player, scheme, preventAutoSwitch) {
-      if (player >= 0) {
-        this._DoSetJoystickValueX(name, x, player, scheme, preventAutoSwitch);
-      } else {
-        this.ForEveryPlayer((key) => {
-          this._DoSetJoystickValueX(name, x, key, scheme, preventAutoSwitch);
-        });
-      }
-    }
-    _DoSetJoystickValueY(name, y, player, scheme, preventAutoSwitch) {
-      y = this.Clamp(y, -1, 1);
-      this.SetJoystickInputStateY(name, player, scheme, y, preventAutoSwitch);
-    }
-    _SetJoystickValueY(name, y, player, scheme, preventAutoSwitch) {
-      if (player >= 0) {
-        this._DoSetJoystickValueY(name, y, player, scheme, preventAutoSwitch);
-      } else {
-        this.ForEveryPlayer((key) => {
-          this._DoSetJoystickValueY(name, y, key, scheme, preventAutoSwitch);
-        });
-      }
-    }
-    _SetControlScheme(scheme, player) {
-      if (player >= 0) {
-        this.SwithToControlScheme(player, scheme);
-      } else {
-        this.ForEveryPlayer((key) => {
-          this.SwithToControlScheme(key, scheme);
-        });
-      }
-    }
-    _SetAutoSwitchControlScheme(player, value) {
-      if (player >= 0) {
-        this.SetAutoSwitchControlScheme(player, value);
-      } else {
-        this.ForEveryPlayer((key) => {
-          this.SetAutoSwitchControlScheme(key, value);
-        });
-        this.autoSwitchControlScheme = value;
-      }
-    }
-    _SetDefaultAxisDeadzone(value) {
-      value = this.Clamp(value, 0, 1);
-      this.defaultAxisDeadzone = value;
-    }
-    _SetDefaultJoystickDeadzone(value) {
-      value = this.Clamp(value, 0, 1);
-      this.defaultJoystickDeadzone = value;
-    }
-    _SetAxisDeadzone(name, value) {
-      value = this.Clamp(value, -1, 1);
-      this.SetAxisInputDeadzone(name, value);
-    }
-    _SetJoystickDeadzone(name, value) {
-      value = this.Clamp(value, -1, 1);
-      this.SetJoystickInputDeadzone(name, value);
-    }
-    _WireTo(name, player) {
-      this.wireData.set(name, player);
-    }
-    _IsDown(name, player) {
-      if (player >= 0) {
-        return this.GetDigitalInputState(name, player);
-      }
-      for (const [key] of this.playerData) {
-        if (this.GetDigitalInputState(name, key)) {
-          return true;
-        }
-      }
-      return false;
-    }
-    _IsAnyDown(player) {
-      if (player >= 0) {
-        return this.IsAnyDigitalInputDown(player);
-      }
-      for (const [key] of this.playerData) {
-        if (this.IsAnyDigitalInputDown(key)) {
-          return true;
-        }
-      }
-      return false;
-    }
-    _IsDownControlScheme(name, player, scheme) {
-      if (player >= 0) {
-        return this.GetDigitalInputState(name, player, scheme);
-      }
-      for (const [key] of this.playerData) {
-        if (this.GetDigitalInputState(name, key, scheme)) {
-          return true;
-        }
-      }
-      return false;
-    }
-    _IsAnyDownControlScheme(player, scheme) {
-      if (player >= 0) {
-        return this.IsAnyDigitalInputDown(player, scheme);
-      }
-      for (const [key] of this.playerData) {
-        if (this.IsAnyDigitalInputDown(key, scheme)) {
-          return true;
-        }
-      }
-      return false;
-    }
-    _OnDown(name, player) {
-      return (
-        this.lastDigitalInput === name &&
-        (this.lastPlayer === player || player < 0)
+          useRenderCells,
+          renderAs3D,
+          useCameraDistanceDrawOrder,
+        },
+        temporary
       );
     }
-    _OnUp(name, player) {
-      return (
-        this.lastDigitalInput === name &&
-        (this.lastPlayer === player || player < 0)
+
+    // ===== ACES =====
+
+    _CreateLayer(
+      name,
+      useRenderCells,
+      renderAs3D,
+      useCameraDistanceDrawOrder,
+      temporary
+    ) {
+      const layout = this.GetRunningLayout();
+      if (!layout) {
+        return;
+      }
+      this.CreateLayerOnLayout(
+        layout,
+        name,
+        useRenderCells,
+        renderAs3D,
+        useCameraDistanceDrawOrder,
+        temporary
       );
     }
-    _OnAnyDown(player) {
-      return this.lastPlayer === player || player < 0;
+    _CreateLayerOnLayout(
+      layoutName,
+      name,
+      useRenderCells,
+      renderAs3D,
+      useCameraDistanceDrawOrder
+    ) {
+      const layout = this.GetLayout(layoutName);
+      if (!layout) {
+        return;
+      }
+      this.CreateLayerOnLayout(
+        layout,
+        name,
+        useRenderCells,
+        renderAs3D,
+        useCameraDistanceDrawOrder,
+        false
+      );
     }
-    _OnAnyUp(player) {
-      return this.lastPlayer === player || player < 0;
+    _DestroyLayer(name) {
+      const layer = this.GetLayer(name);
+      if (!layer) {
+        return;
+      }
+      layer._skymen_Destroy();
     }
-    _IsControlSchemeEnabled(name, player) {
-      if (player >= 0) {
-        return this.GetControlSchemeEnabled(player, name);
+    _DestroyLayerOnLayout(layoutName, name) {
+      const layout = this.GetLayout(layoutName);
+      if (!layout) {
+        return;
       }
-      for (const [key] of this.playerData) {
-        if (this.GetControlSchemeEnabled(key, name)) {
-          return true;
-        }
+      const layer = layout.GetLayer(name);
+      if (!layer) {
+        return;
       }
-      return false;
+      layer._skymen_Destroy();
     }
-    _IsAxisOutsideDeadzone(name, player) {
-      if (player >= 0) {
-        return this.IsAxisOutsideDeadzone(name, player);
+    _MoveLayerToLayer(name, target, before) {
+      const layer = this.GetLayer(name);
+      if (!layer) {
+        return;
       }
-      for (const [key] of this.playerData) {
-        if (this.IsAxisOutsideDeadzone(name, key)) {
-          return true;
-        }
+      const targetLayer = this.GetLayer(target);
+      if (!targetLayer) {
+        return;
       }
-      return false;
+      const layout = this.GetRunningLayout();
+      if (!layout) {
+        return;
+      }
+      layout._skymen_MoveLayerToLayer(layer, targetLayer, before);
     }
-    _IsAxisOutsideDeadzoneControlScheme(name, player, scheme) {
-      if (player >= 0) {
-        return this.IsAxisOutsideDeadzone(name, player, scheme);
+    _SetLayerAsChildOfLayer(name, target, index) {
+      const layer = this.GetLayer(name);
+      if (!layer) {
+        return;
       }
-      for (const [key] of this.playerData) {
-        if (this.IsAxisOutsideDeadzone(name, key, scheme)) {
-          return true;
-        }
+      const targetLayer = this.GetLayer(target);
+      if (!targetLayer) {
+        return;
       }
-      return false;
+      const layout = this.GetRunningLayout();
+      if (!layout) {
+        return;
+      }
+      layout._skymen_MoveLayer(layer, targetLayer, index);
     }
-    _IsAnyAxisOutsideDeadzone(player) {
-      if (player >= 0) {
-        return this.IsAnyAxisOutsideDeadzone(player);
+    _SetLayerAsRoot(name, index) {
+      const layer = this.GetLayer(name);
+      if (!layer) {
+        return;
       }
-      for (const [key] of this.playerData) {
-        if (this.IsAnyAxisOutsideDeadzone(key)) {
-          return true;
-        }
+      const layout = this.GetRunningLayout();
+      if (!layout) {
+        return;
       }
-      return false;
+      layout._skymen_MoveLayer(layer, null, index);
     }
-    _IsAnyAxisOutsideDeadzoneControlScheme(player, scheme) {
-      if (player >= 0) {
-        return this.IsAnyAxisOutsideDeadzone(player, scheme);
+    _SetLayerAsRootOnLayout(layoutName, name, index) {
+      const layout = this.GetLayout(layoutName);
+      if (!layout) {
+        return;
       }
-      for (const [key] of this.playerData) {
-        if (this.IsAnyAxisOutsideDeadzone(key, scheme)) {
-          return true;
-        }
+      const layer = layout.GetLayer(name);
+      if (!layer) {
+        return;
       }
-      return false;
+      layout._skymen_MoveLayer(layer, null, index);
     }
-    _IsJoystickOutsideDeadzone(name, player) {
-      if (player >= 0) {
-        return this.IsJoystickOutsideDeadzone(name, player);
+    _SetLayerAsChildOfLayerOnLayout(layoutName, name, target, index) {
+      const layout = this.GetLayout(layoutName);
+      if (!layout) {
+        return;
       }
-      for (const [key] of this.playerData) {
-        if (this.IsJoystickOutsideDeadzone(name, key)) {
-          return true;
-        }
+      const layer = layout.GetLayer(name);
+      if (!layer) {
+        return;
       }
-      return false;
+      const targetLayer = layout.GetLayer(target);
+      if (!targetLayer) {
+        return;
+      }
+      layout._skymen_MoveLayer(layer, targetLayer, index);
     }
-    _IsJoystickOutsideDeadzoneControlScheme(name, player, scheme) {
-      if (player >= 0) {
-        return this.IsJoystickOutsideDeadzone(name, player, scheme);
+    _IsLayerChildOfLayer(child, parent) {
+      const layer = this.GetLayer(child);
+      if (!layer) {
+        return false;
       }
-      for (const [key] of this.playerData) {
-        if (this.IsJoystickOutsideDeadzone(name, key, scheme)) {
-          return true;
-        }
+      const parentLayer = this.GetLayer(parent);
+      if (!parentLayer) {
+        return false;
       }
-      return false;
+      return child._parentLayer === parentLayer;
     }
-    _IsAnyJoystickOutsideDeadzone(player) {
-      if (player >= 0) {
-        return this.IsAnyJoystickOutsideDeadzone(player);
+    _IsLayerRoot(layerName) {
+      const layer = this.GetLayer(layerName);
+      if (!layer) {
+        return false;
       }
-      for (const [key] of this.playerData) {
-        if (this.IsAnyJoystickOutsideDeadzone(key)) {
-          return true;
-        }
+      return !layer._parentLayer;
+    }
+    _LayerExists(layer) {
+      return !!this.GetLayer(layer);
+    }
+    _LayerHasChildren(layerName) {
+      const layer = this.GetLayer(layerName);
+      if (!layer) {
+        return false;
       }
-      return false;
+      return layer._subLayers.length > 0;
     }
-    _IsAnyJoystickOutsideDeadzoneControlScheme(player, scheme) {
-      if (player >= 0) {
-        return this.IsAnyJoystickOutsideDeadzone(player, scheme);
+    _IsLayerChildOfLayerOnLayout(layoutName, child, parent) {
+      const layout = this.GetLayout(layoutName);
+      if (!layout) {
+        return;
       }
-      for (const [key] of this.playerData) {
-        if (this.IsAnyJoystickOutsideDeadzone(key, scheme)) {
-          return true;
-        }
+      const layer = layout.GetLayer(child);
+      if (!layer) {
+        return false;
       }
-      return false;
-    }
-    _GetLastInput() {
-      return this.lastDigitalInput;
-    }
-    _GetLastPlayer() {
-      return this.lastPlayer;
-    }
-    _GetAxis(name, player) {
-      if (player >= 0 && this.IsAxisOutsideDeadzone(name, player)) {
-        return this.GetAxisInputState(name, player);
+      const parentLayer = layout.GetLayer(parent);
+      if (!parentLayer) {
+        return false;
       }
-      return 0;
+      return layer._parentLayer === parentLayer;
     }
-    _GetJoystickX(name, player) {
-      if (player >= 0 && this.IsJoystickOutsideDeadzone(name, player)) {
-        return this.GetJoystickInputState(name, player).x;
+    _IsLayerRootOnLayout(layoutName, layerName) {
+      const layout = this.GetLayout(layoutName);
+      if (!layout) {
+        return;
       }
-      return 0;
-    }
-    _GetJoystickY(name, player) {
-      if (player >= 0 && this.IsJoystickOutsideDeadzone(name, player)) {
-        return this.GetJoystickInputState(name, player).y;
+      const layer = layout.GetLayer(layerName);
+      if (!layer) {
+        return false;
       }
-      return 0;
+      return !layer._parentLayer;
     }
-    _GetRawAxis(name, player) {
-      if (player >= 0) {
-        return this.GetAxisInputState(name, player);
+    _LayerExistsOnLayout(layoutName, layer) {
+      const layout = this.GetLayout(layoutName);
+      if (!layout) {
+        return;
       }
-      return 0;
+      return !!layout.GetLayer(layer);
     }
-    _GetRawJoystickX(name, player) {
-      if (player >= 0) {
-        return this.GetJoystickInputState(name, player).x;
+    _LayerHasChildrenOnLayout(layoutName, layerName) {
+      const layout = this.GetLayout(layoutName);
+      if (!layout) {
+        return;
       }
-      return 0;
-    }
-    _GetRawJoystickY(name, player) {
-      if (player >= 0) {
-        return this.GetJoystickInputState(name, player).y;
+      const layer = layout.GetLayer(layerName);
+      if (!layer) {
+        return false;
       }
-      return 0;
+      return layer._subLayers.length > 0;
     }
-    _GetJoystickAngle(name, player) {
-      if (player >= 0) {
-        const joystick = this.GetJoystickInputState(name, player);
-        return Math.atan2(joystick.y, joystick.x) * (180 / Math.PI);
-      }
-      return 0;
-    }
-    _GetJoystickMagnitude(name, player) {
-      if (player >= 0 && this.IsJoystickOutsideDeadzone(name, player)) {
-        const joystick = this.GetJoystickInputState(name, player);
-        return Math.sqrt(joystick.x * joystick.x + joystick.y * joystick.y);
-      }
-      return 0;
-    }
-    _GetRawJoystickMagnitude(name, player) {
-      if (player >= 0) {
-        const joystick = this.GetJoystickInputState(name, player);
-        return Math.sqrt(joystick.x * joystick.x + joystick.y * joystick.y);
-      }
-      return 0;
-    }
-    _GetControlScheme(player) {
-      if (player >= 0) {
-        return this.GetPlayerActiveControlScheme(player);
-      }
-      return "";
-    }
-    _WireFrom(name) {
-      if (this.wireData.has(name)) {
-        return this.wireData.get(name);
-      } else {
+    _RootLayerCount() {
+      layout = this.GetRunningLayout();
+      if (!layout) {
         return 0;
       }
+      return layout._rootLayers.length;
+    }
+    _SubLayerCount(layerName) {
+      const layer = this.GetLayer(layerName);
+      if (!layer) {
+        return 0;
+      }
+      return layer._subLayers.length;
+    }
+    _SubLayerAt(layerName, index) {
+      const layer = this.GetLayer(layerName);
+      if (!layer) {
+        return "";
+      }
+      if (index < 0 || index >= layer._subLayers.length) {
+        return "";
+      }
+      return layer._subLayers[index]._name;
+    }
+    _RootLayerAt(index) {
+      const layout = this.GetRunningLayout();
+      if (!layout) {
+        return "";
+      }
+      if (index < 0 || index >= layout._rootLayers.length) {
+        return "";
+      }
+      return layout._rootLayers[index]._name;
+    }
+    _RootLayerCountOnLayout(layoutName) {
+      const layout = this.GetLayout(layoutName);
+      return layout._rootLayers.length;
+    }
+    _SubLayerCountOnLayout(layoutName, layerName) {
+      const layout = this.GetLayout(layoutName);
+      if (!layout) {
+        return "";
+      }
+      const layer = layout.GetLayer(layerName);
+      if (!layer) {
+        return 0;
+      }
+      return layer._subLayers.length;
+    }
+    _SubLayerAtOnLayout(layoutName, layerName, index) {
+      const layout = this.GetLayout(layoutName);
+      if (!layout) {
+        return "";
+      }
+      const layer = layout.GetLayer(layerName);
+      if (!layer) {
+        return "";
+      }
+      if (index < 0 || index >= layer._subLayers.length) {
+        return "";
+      }
+      return layer._subLayers[index]._name;
+    }
+    _RootLayerAtOnLayout(layoutName, index) {
+      const layout = this.GetLayout(layoutName);
+      if (!layout) {
+        return "";
+      }
+      if (index < 0 || index >= layout._rootLayers.length) {
+        return "";
+      }
+      return layout._rootLayers[index]._name;
     }
   };
 }

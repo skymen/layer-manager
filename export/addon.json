@@ -1,13 +1,13 @@
 {
   "is-c3-addon": true,
   "type": "plugin",
-  "name": "Better Input Manager",
-  "id": "skymen_better_input_manager",
+  "name": "Layer Manager",
+  "id": "skymen_layer_manager",
   "version": "1.0.0.3",
   "author": "skymen",
   "website": "https://www.construct.net",
   "documentation": "https://www.construct.net",
-  "description": "An improved input manager",
+  "description": "Create, Destroy and Reorder Layers at runtime",
   "editor-scripts": [
     "editor.js"
   ],
