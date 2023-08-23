@@ -89,6 +89,26 @@ const PLUGIN_INFO = {
           "forward": (inst) => inst._LayerHasChildrenOnLayout,
           
           "autoScriptInterface": true,
+        },
+"IsLayerSublayerOfLayer": {
+          "forward": (inst) => inst._IsLayerSublayerOfLayer,
+          
+          "autoScriptInterface": true,
+        },
+"IsLayerSublayerOfLayerOnLayout": {
+          "forward": (inst) => inst._IsLayerSublayerOfLayer,
+          
+          "autoScriptInterface": true,
+        },
+"ObjectIsOnLayer_Parent": {
+          "forward": (inst) => inst._ObjectIsOnLayer_Parent,
+          
+          "autoScriptInterface": true,
+        },
+"ObjectIsOnLayer_Sublayer": {
+          "forward": (inst) => inst._ObjectIsOnLayer_Sublayer,
+          
+          "autoScriptInterface": true,
         }
   },
   Exps: {
@@ -273,9 +293,11 @@ function getInstanceJs() {
     ];
   }
 
-  const layerMap = new Map();
-
+  const layoutMap = new WeakMap();
   function registerLayer(layer) {
+    const layout = layer._layout;
+    if (!layoutMap.has(layout)) layoutMap.set(layout, new Map());
+    let layerMap = layoutMap.get(layout);
     if (!layerMap.has(layer._index)) layerMap.set(layer._index, layer);
   }
 
@@ -284,6 +306,7 @@ function getInstanceJs() {
     constructor(...args) {
       super(...args);
       this._skymen_tempLayers = [];
+      if (!layoutMap.has(this)) layoutMap.set(this, new Map());
     }
 
     _skymen_CreateLayer(options, temporary) {
@@ -436,7 +459,7 @@ function getInstanceJs() {
         if (uniqueInstanceData) childInstData = uniqueInstanceData;
         else {
           const layout = this._layoutManager.GetLayoutBySID(childLayoutSID);
-          const l = layerMap.get(childLayerIndex);
+          const l = layoutMap.get(layout).get(childLayerIndex);
           childInstData = l.GetInitialInstanceData(childUID);
         }
         const childObjectClass = this.GetObjectClassByIndex(childInstData[1]);
@@ -519,7 +542,7 @@ function getInstanceJs() {
     }
 
     // ===== UTILS =====
-    GetLayerFromLayer(layoutName, name) {
+    GetLayerFromLayout(layoutName, name) {
       const layout = this.GetLayout(layoutName);
       if (!layout) {
         return null;
@@ -536,6 +559,7 @@ function getInstanceJs() {
     }
 
     GetLayout(name) {
+      if (name === "") return this.GetRunningLayout();
       return this._runtime._layoutManager._layoutsByName.get(
         name.toLowerCase()
       );
@@ -702,6 +726,105 @@ function getInstanceJs() {
       }
       return child._parentLayer === parentLayer;
     }
+
+    _IsLayerSublayerOfLayer(child, parent, which) {
+      //any sublayer
+      if (which === 0) {
+        return [...child.parentLayers()].includes(parent);
+      }
+      //only direct sublayers
+      else if (which === 1) {
+        return child.GetParentLayer() === parent;
+      }
+    }
+
+    _IsLayerSublayerOfLayerOnLayout(childName, parentName, which, layoutName) {
+      const child = this.GetLayerFromLayout(layoutName, childName);
+      const parent = this.GetLayerFromLayout(layoutName, parentName);
+      if (!child || !parent) return false;
+
+      //any sublayer
+      if (which === 0) {
+        return [...child.parentLayers()].includes(parent);
+      }
+      //only direct sublayers
+      else if (which === 1) {
+        return child.GetParentLayer() === parent;
+      }
+    }
+
+    _ObjectIsOnLayer_Parent(objectClass, layer, which, excludeSelf) {
+      if (!layer) return false;
+
+      const mySol = objectClass.GetCurrentSol();
+      const myInstances = mySol.GetInstances();
+      if (myInstances.length === 0) return false;
+      const pickedInstances = new Set();
+
+      for (let i = 0, len = myInstances.length; i < len; ++i) {
+        const myInst = myInstances[i];
+        const instLayer = myInst.GetWorldInfo().GetLayer();
+        if (instLayer === layer) {
+          if (excludeSelf === 0) {
+            pickedInstances.add(myInst);
+          }
+        }
+        //any parent layer
+        else if (which === 0) {
+          //console.log("Parent Layers", [...instLayer.parentLayers()])
+          if ([...layer.parentLayers()].includes(instLayer)) {
+            pickedInstances.add(myInst);
+          }
+        }
+        //only direct parent layer
+        else if (which === 1) {
+          if (layer.GetParentLayer() === instLayer) {
+            pickedInstances.add(myInst);
+          }
+        }
+      }
+      if (pickedInstances.size === 0) return false;
+      mySol.SetSetPicked(pickedInstances);
+      objectClass.ApplySolToContainer();
+      return true;
+    }
+
+    _ObjectIsOnLayer_Sublayer(objectClass, layer, which, excludeSelf) {
+      if (!layer) return false;
+
+      const mySol = objectClass.GetCurrentSol();
+      const myInstances = mySol.GetInstances();
+      if (myInstances.length === 0) return false;
+      const pickedInstances = new Set();
+
+      for (let i = 0, len = myInstances.length; i < len; ++i) {
+        const myInst = myInstances[i];
+        const instLayer = myInst.GetWorldInfo().GetLayer();
+        if (instLayer === layer) {
+          if (excludeSelf === 0) {
+            pickedInstances.add(myInst);
+          }
+        }
+        //any sublayer
+        else if (which === 0) {
+          //cant be self because that was already checked : nice
+          if ([...instLayer.parentLayers()].includes(layer)) {
+            pickedInstances.add(myInst);
+          }
+        }
+        //only direct sublayers
+        else if (which === 1) {
+          if (instLayer.GetParentLayer() === layer) {
+            pickedInstances.add(myInst);
+          }
+        }
+      }
+      if (pickedInstances.size === 0) return false;
+      mySol.SetSetPicked(pickedInstances);
+      objectClass.ApplySolToContainer();
+      return true;
+    }
+
     _IsLayerRoot(layerName) {
       const layer = this.GetLayer(layerName);
       if (!layer) {

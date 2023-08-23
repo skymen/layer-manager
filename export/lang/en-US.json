@@ -300,6 +300,118 @@
                 "desc": "The layer"
               }
             }
+          },
+          "IsLayerSublayerOfLayer": {
+            "list-name": "Is Layer Sublayer Of Layer",
+            "display-text": "Is layer [i]{0}[/i] [i]{2}[/i] sublayer of layer [i]{1}[/i]",
+            "description": "Test if a layer is a sublayer of another layer",
+            "params": {
+              "sub": {
+                "name": "Sub",
+                "desc": "The sub layer"
+              },
+              "root": {
+                "name": "Root",
+                "desc": "The root layer"
+              },
+              "which": {
+                "name": "Which",
+                "desc": "Wether to test if the sub layer is any sublayer or a direct sublayer",
+                "items": {
+                  "any": "Any",
+                  "own": "Own"
+                }
+              }
+            }
+          },
+          "IsLayerSublayerOfLayerOnLayout": {
+            "list-name": "Is Layer Sublayer Of Layer",
+            "display-text": "Is layer [i]{0}[/i] [i]{2}[/i] sublayer of layer [i]{1}[/i] on layout [i]{3}[/i]",
+            "description": "Test if a layer is a sublayer of another layer on a layout",
+            "params": {
+              "sub": {
+                "name": "Sub",
+                "desc": "The sub layer"
+              },
+              "root": {
+                "name": "Root",
+                "desc": "The root layer"
+              },
+              "which": {
+                "name": "Which",
+                "desc": "Wether to test if the sub layer is any sublayer or a direct sublayer",
+                "items": {
+                  "any": "Any",
+                  "own": "Own"
+                }
+              },
+              "layout": {
+                "name": "Layout",
+                "desc": "The layout"
+              }
+            }
+          },
+          "ObjectIsOnLayer_Parent": {
+            "list-name": "Object Is On Parent Layer of",
+            "display-text": "{0} | Is on {2} parent layer of {1} ({3})",
+            "description": "Pick all objects on a given layer.",
+            "params": {
+              "object": {
+                "name": "Object",
+                "desc": "The object"
+              },
+              "layer": {
+                "name": "Layer",
+                "desc": "The layer"
+              },
+              "which": {
+                "name": "Which",
+                "desc": "Wether to test if the sub layer is any sublayer or a direct sublayer",
+                "items": {
+                  "any": "Any",
+                  "own": "Own"
+                }
+              },
+              "self": {
+                "name": "Self",
+                "desc": "Whether to test if the object is on the layer itself",
+                "items": {
+                  "yes": "Self included",
+                  "no": "Self excluded"
+                }
+              }
+            }
+          },
+          "ObjectIsOnLayer_Sublayer": {
+            "list-name": "Object Is On Sublayer Of",
+            "display-text": "{0} | Is on {2} sublayer of {1} ({3})",
+            "description": "Pick all objects on a given layer.",
+            "params": {
+              "object": {
+                "name": "Object",
+                "desc": "The object"
+              },
+              "layer": {
+                "name": "Layer",
+                "desc": "The layer"
+              },
+              "which": {
+                "name": "Which",
+                "desc": "Wether to test if the sub layer is any sublayer or a direct sublayer",
+                "items": {
+                  "any": "Any",
+                  "own": "Own"
+                }
+              },
+              "self": {
+                "name": "Self",
+                "desc": "Whether to test if the object is on the layer itself",
+                "items": {
+                  "yes": "Self included",
+                  "no": "Self excluded"
+                }
+              }
+            }
           }
         },
         "expressions": {

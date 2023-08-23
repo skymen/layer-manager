@@ -2,9 +2,9 @@ const SDK = self.SDK;
 
 const PLUGIN_INFO = {
   "id": "skymen_layer_manager",
-  "version": "1.0.0.3",
+  "version": "1.0.0.6",
   "category": "general",
-  "author": "skymen",
+  "author": "skymen, Overboy",
   "type": "object",
   "addonType": "plugin",
   "info": {

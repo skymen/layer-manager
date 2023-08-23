@@ -41,9 +41,11 @@ function getInstanceJs() {
     ];
   }
 
-  const layerMap = new Map();
-
+  const layoutMap = new WeakMap();
   function registerLayer(layer) {
+    const layout = layer._layout;
+    if (!layoutMap.has(layout)) layoutMap.set(layout, new Map());
+    let layerMap = layoutMap.get(layout);
     if (!layerMap.has(layer._index)) layerMap.set(layer._index, layer);
   }
 
@@ -52,6 +54,7 @@ function getInstanceJs() {
     constructor(...args) {
       super(...args);
       this._skymen_tempLayers = [];
+      if (!layoutMap.has(this)) layoutMap.set(this, new Map());
     }
 
     _skymen_CreateLayer(options, temporary) {
@@ -204,7 +207,7 @@ function getInstanceJs() {
         if (uniqueInstanceData) childInstData = uniqueInstanceData;
         else {
           const layout = this._layoutManager.GetLayoutBySID(childLayoutSID);
-          const l = layerMap.get(childLayerIndex);
+          const l = layoutMap.get(layout).get(childLayerIndex);
           childInstData = l.GetInitialInstanceData(childUID);
         }
         const childObjectClass = this.GetObjectClassByIndex(childInstData[1]);

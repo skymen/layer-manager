@@ -5,6 +5,7 @@
         "id": "IsLayerChildOfLayer",
         "scriptName": "IsLayerChildOfLayer",
         "highlight": false,
+        "deprecated": true,
         "params": [
           {
             "id": "childLayer",
@@ -124,6 +125,125 @@
             "id": "layer",
             "type": "string",
             "value": ""
+          }
+        ]
+      },
+      {
+        "id": "IsLayerSublayerOfLayer",
+        "scriptName": "IsLayerSublayerOfLayer",
+        "highlight": false,
+        "params": [
+          {
+            "id": "sub",
+            "type": "layer",
+            "value": ""
+          },
+          {
+            "id": "root",
+            "type": "layer",
+            "value": ""
+          },
+          {
+            "id": "which",
+            "type": "combo",
+            "items": [
+              "any",
+              "own"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "IsLayerSublayerOfLayerOnLayout",
+        "scriptName": "IsLayerSublayerOfLayerOnLayout",
+        "highlight": false,
+        "params": [
+          {
+            "id": "sub",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "root",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "id": "which",
+            "type": "combo",
+            "items": [
+              "any",
+              "own"
+            ]
+          },
+          {
+            "id": "layout",
+            "type": "string",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "id": "ObjectIsOnLayer_Parent",
+        "scriptName": "ObjectIsOnLayer_Parent",
+        "highlight": false,
+        "params": [
+          {
+            "id": "object",
+            "type": "object"
+          },
+          {
+            "id": "layer",
+            "type": "layer",
+            "value": ""
+          },
+          {
+            "id": "which",
+            "type": "combo",
+            "items": [
+              "any",
+              "own"
+            ]
+          },
+          {
+            "id": "self",
+            "type": "combo",
+            "items": [
+              "yes",
+              "no"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ObjectIsOnLayer_Sublayer",
+        "scriptName": "ObjectIsOnLayer_Sublayer",
+        "highlight": false,
+        "params": [
+          {
+            "id": "object",
+            "type": "object"
+          },
+          {
+            "id": "layer",
+            "type": "layer",
+            "value": ""
+          },
+          {
+            "id": "which",
+            "type": "combo",
+            "items": [
+              "any",
+              "own"
+            ]
+          },
+          {
+            "id": "self",
+            "type": "combo",
+            "items": [
+              "yes",
+              "no"
+            ]
           }
         ]
       }

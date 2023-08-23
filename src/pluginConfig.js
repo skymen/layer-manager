@@ -3,7 +3,7 @@ module.exports = {
   addonType: "plugin",
   id: "skymen_layer_manager",
   name: "Layer Manager",
-  version: "1.0.0.5",
+  version: "1.0.0.6",
   category: "general",
   author: "skymen, Overboy",
   website: "https://www.construct.net",
